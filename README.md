@@ -1,6 +1,6 @@
 # GCA - Georgian Crewing Agency
 
-![GCA Logo](public/images/gca-logo.jpg)
+![GCA Logo](public/images/gca-logo.jpg?v=2)
 
 Official website for Georgian Crewing Agency, a professional maritime crewing services provider.
 
