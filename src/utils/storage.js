@@ -7,27 +7,40 @@ export const storage = {
   // Application storage
   async saveApplication(application) {
     try {
+      console.log('Attempting to save application to Supabase:', application);
+      
+      const insertData = {
+        name: application.name,
+        surname: application.surname,
+        rank_applied_for: application.rank_applied_for,
+        experience_contracts: application.experience_contracts,
+        experience_sea_time_months: application.experience_sea_time_months,
+        phone_number: application.phone_number,
+        email_address: application.email_address,
+        gdpr_agreed: application.gdpr_agreed || false,
+        application_id: application.application_id,
+        status: 'pending'
+      };
+      
+      console.log('Insert data:', insertData);
+      
       const { data, error } = await supabase
         .from('gca_crew_applications')
-        .insert([{
-          name: application.name,
-          surname: application.surname,
-          rank_applied_for: application.rank_applied_for,
-          experience_contracts: application.experience_contracts,
-          experience_sea_time_months: application.experience_sea_time_months,
-          phone_number: application.phone_number,
-          email_address: application.email_address,
-          gdpr_agreed: application.gdpr_agreed || false,
-          application_id: application.application_id,
-          status: 'pending'
-        }])
+        .insert([insertData])
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase insert error:', error);
+        console.error('Error details:', JSON.stringify(error, null, 2));
+        throw new Error(`Database error: ${error.message || 'Unknown error'}`);
+      }
+      
+      console.log('Application saved successfully:', data);
       return data;
     } catch (error) {
       console.error('Error saving application:', error);
+      console.error('Error stack:', error.stack);
       throw error;
     }
   },
