@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Pages.css';
 
 const Apply = () => {
@@ -15,6 +15,12 @@ const Apply = () => {
   const [gdprAgreed, setGdprAgreed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (submitted) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
