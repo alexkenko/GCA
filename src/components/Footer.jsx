@@ -51,12 +51,14 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Georgian Crewing Agency. All rights reserved.</p>
-          <p className="footer-legal-links">
-            <Link to="/terms-of-service">Terms</Link> | 
-            <Link to="/privacy-policy">Privacy</Link> | 
-            <Link to="/cookie-policy">Cookies</Link>
-          </p>
+          <div className="footer-bottom-content">
+            <p>&copy; {new Date().getFullYear()} Georgian Crewing Agency. All rights reserved.</p>
+            <p className="footer-legal-links">
+              <Link to="/terms-of-service">Terms</Link> | 
+              <Link to="/privacy-policy">Privacy</Link> | 
+              <Link to="/cookie-policy">Cookies</Link>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

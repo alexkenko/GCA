@@ -96,7 +96,11 @@
 
 .footer-bottom {
   border-top: 2px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.footer-bottom-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
