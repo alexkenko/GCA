@@ -86,6 +86,21 @@ export const storage = {
     }
   },
 
+  async deleteApplication(id) {
+    try {
+      const { error } = await supabase
+        .from('gca_crew_applications')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      return true;
+    } catch (error) {
+      console.error('Error deleting application:', error);
+      throw error;
+    }
+  },
+
   // Admin session (still using localStorage for client-side session)
   setAdminSession(username) {
     const session = {

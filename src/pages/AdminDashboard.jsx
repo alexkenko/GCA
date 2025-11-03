@@ -48,6 +48,22 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDelete = async (id, applicantName) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete the application from ${applicantName}?\n\nThis action cannot be undone.`
+    );
+    
+    if (!confirmed) return;
+
+    try {
+      await storage.deleteApplication(id);
+      loadApplications();
+    } catch (error) {
+      console.error('Error deleting application:', error);
+      alert('Failed to delete application. Please try again.');
+    }
+  };
+
   const handleLogout = () => {
     storage.clearAdminSession();
     navigate('/admin/login');
@@ -125,7 +141,7 @@ const AdminDashboard = () => {
                         Submitted: {formatDate(app.created_at)}
                       </p>
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                       <select
                         value={app.status}
                         onChange={(e) => handleStatusChange(app.id, e.target.value)}
@@ -143,6 +159,23 @@ const AdminDashboard = () => {
                         <option value="hired">Hired</option>
                         <option value="rejected">Rejected</option>
                       </select>
+                      <button
+                        onClick={() => handleDelete(app.id, `${app.name} ${app.surname}`)}
+                        className="btn btn-secondary"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          backgroundColor: '#dc3545',
+                          color: 'white',
+                          border: 'none',
+                          borderRadius: '8px',
+                          cursor: 'pointer',
+                          fontWeight: 600,
+                          fontSize: '0.9rem'
+                        }}
+                        title="Delete this application"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
 
