@@ -85,6 +85,8 @@ const Apply = () => {
     const applicationId = Date.now().toString().slice(-8);
     
     try {
+      console.log('Submitting application...', formData);
+      
       // Save to Supabase
       const savedApp = await storage.saveApplication({
         name: formData.name,
@@ -99,6 +101,8 @@ const Apply = () => {
         status: 'pending'
       });
 
+      console.log('Application saved successfully:', savedApp);
+      
       setApplicationId(applicationId);
       setSubmitted(true);
       
@@ -121,8 +125,8 @@ const Apply = () => {
         setApplicationId('');
       }, 5000);
     } catch (err) {
-      console.error('Error:', err);
-      alert('An error occurred. Please try again.');
+      console.error('Error submitting application:', err);
+      alert('Error submitting application: ' + (err.message || 'Unknown error. Please check the browser console for details.'));
     }
   };
 
