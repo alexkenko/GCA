@@ -111,26 +111,110 @@
   opacity: 0;
 }
 
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background: var(--marine-blue-dark);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .header-container {
-    flex-direction: column;
-    gap: 1rem;
+    position: relative;
     padding: 1rem;
   }
 
+  .hamburger-menu {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .nav-menu {
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 51, 102, 0.2);
+    border-radius: 0 0 14px 14px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-menu-open {
+    max-height: 500px;
+    opacity: 1;
   }
 
   .nav-menu a {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.1);
+    border-radius: 0;
+  }
+
+  .nav-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .nav-menu a:hover {
+    background: rgba(0, 51, 102, 0.05);
+    transform: none;
   }
 
   .company-name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding-right: 3rem;
+  }
+
+  .logo img {
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-name {
+    font-size: 1rem;
+  }
+
+  .logo {
+    gap: 0.75rem;
   }
 }
