@@ -1,16 +1,24 @@
+:root {
+  --marine-blue-dark: #003366;
+  --marine-blue: #005588;
+  --marine-blue-medium: #0077BE;
+  --marine-blue-light: #1E90FF;
+}
+
 .header {
-  background-color: white;
+  background: linear-gradient(to bottom, white 0%, #FAFBFC 100%);
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 3px solid var(--marine-blue-light);
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,36 +27,64 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
 }
 
 .logo img {
-  height: 50px;
+  height: 55px;
   width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 51, 102, 0.2));
 }
 
 .company-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--marine-blue-dark);
+  letter-spacing: -0.5px;
 }
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
 .nav-menu a {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  color: var(--marine-blue-dark);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 1rem;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--marine-blue-light);
+  transition: width 0.3s ease;
 }
 
 .nav-menu a:hover {
-  color: #0066cc;
+  color: var(--marine-blue);
+  background: rgba(0, 51, 102, 0.05);
+}
+
+.nav-menu a:hover::after {
+  width: 80%;
 }
 
 /* Mobile responsive */
@@ -60,13 +96,17 @@
   }
 
   .nav-menu {
-    gap: 1rem;
+    gap: 0.25rem;
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  .nav-menu a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
   .company-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 }
-

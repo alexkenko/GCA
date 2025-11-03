@@ -1,0 +1,144 @@
+:root {
+  --marine-blue-dark: #003366;
+  --marine-blue: #005588;
+  --marine-blue-medium: #0077BE;
+  --marine-blue-light: #1E90FF;
+  --marine-blue-pale: #E6F2FF;
+  --ocean-teal: #008B8B;
+}
+
+.footer {
+  background: linear-gradient(135deg, var(--marine-blue-dark) 0%, var(--navy) 100%);
+  color: white;
+  padding: 4rem 2rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-weight: 700;
+  border-bottom: 3px solid var(--marine-blue-light);
+  padding-bottom: 0.75rem;
+}
+
+.footer-section h4 {
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: var(--marine-blue-light);
+  font-weight: 600;
+}
+
+.footer-section p {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+.footer-contact {
+  margin-top: 1.5rem;
+}
+
+.footer-contact p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.footer-contact strong {
+  color: var(--marine-blue-light);
+}
+
+.footer-contact a {
+  color: var(--marine-blue-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-section ul li a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+
+.footer-section ul li a:hover {
+  color: var(--marine-blue-light);
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer-legal-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+  color: var(--marine-blue-light);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
