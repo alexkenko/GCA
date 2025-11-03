@@ -41,17 +41,18 @@ const Contact = () => {
             <div className="contact-details">
               <div className="contact-item">
                 <h3>Email</h3>
-                <p>info@georgiancrewing.com</p>
+                <p><a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a></p>
               </div>
 
               <div className="contact-item">
                 <h3>Phone</h3>
-                <p>+995 XXX XXX XXX</p>
+                <p><a href="tel:+995593107878">593 10 78 78</a></p>
+                <p><a href="tel:+995592444436">592 44 44 36</a></p>
               </div>
 
               <div className="contact-item">
                 <h3>Address</h3>
-                <p>Tbilisi, Georgia</p>
+                <p>Maiakovski Ave, N41<br />Batumi, Georgia</p>
               </div>
 
               <div className="contact-item">
