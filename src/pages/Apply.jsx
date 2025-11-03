@@ -88,7 +88,10 @@ const Apply = () => {
     
     setSubmitted(true);
     
-    // Reset form after 3 seconds
+    // Scroll to top immediately
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Reset form after 5 seconds
     setTimeout(() => {
       setFormData({
         name: '',
