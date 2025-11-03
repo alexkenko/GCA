@@ -97,7 +97,16 @@ const AdminDashboard = () => {
         <div className="luxury-box">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
             <h1>Admin Dashboard - Crew Applications</h1>
-            <button onClick={handleLogout} className="btn btn-secondary" style={{ padding: '0.75rem 1.5rem' }}>
+            <button 
+              onClick={handleLogout} 
+              className="btn btn-secondary" 
+              style={{ 
+                padding: '0.75rem 1.5rem',
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none'
+              }}
+            >
               Logout
             </button>
           </div>
