@@ -17,6 +17,8 @@ import LegalDisclaimer from './pages/LegalDisclaimer';
 import GDPRCompliance from './pages/GDPRCompliance';
 import NoBribePolicy from './pages/NoBribePolicy';
 import FAQ from './pages/FAQ';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 import './styles/App.css';
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
           <Route path="/gdpr-compliance" element={<GDPRCompliance />} />
           <Route path="/no-bribe-policy" element={<NoBribePolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
         <Footer />
       </div>

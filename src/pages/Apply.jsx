@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { storage } from '../utils/storage';
 import '../styles/Pages.css';
 
 const Apply = () => {
@@ -15,6 +16,7 @@ const Apply = () => {
   const [gdprAgreed, setGdprAgreed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [applicationId, setApplicationId] = useState('');
 
   useEffect(() => {
     if (submitted) {
@@ -79,32 +81,49 @@ const Apply = () => {
       return;
     }
 
-    // In a real application, this would send data to a backend API
-    // For now, we'll log it and show a success message
-    console.log('Application submitted:', formData);
+    // Generate application ID
+    const applicationId = Date.now().toString().slice(-8);
     
-    // You can integrate with your backend here
-    // Example: await fetch('/api/applications', { method: 'POST', body: JSON.stringify(formData) });
-    
-    setSubmitted(true);
-    
-    // Scroll to top immediately
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Reset form after 5 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        surname: '',
-        rank: '',
-        contracts: '',
-        seaTime: '',
-        phone: '',
-        email: ''
+    try {
+      // Save to local storage (in production, replace with API call)
+      const savedApp = storage.saveApplication({
+        name: formData.name,
+        surname: formData.surname,
+        rank_applied_for: formData.rank,
+        experience_contracts: parseInt(formData.contracts),
+        experience_sea_time_months: parseInt(formData.seaTime),
+        phone_number: formData.phone,
+        email_address: formData.email,
+        gdpr_agreed: gdprAgreed,
+        application_id: applicationId,
+        status: 'pending'
       });
-      setGdprAgreed(false);
-      setSubmitted(false);
-    }, 5000);
+
+      setApplicationId(applicationId);
+      setSubmitted(true);
+      
+      // Scroll to top immediately
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          surname: '',
+          rank: '',
+          contracts: '',
+          seaTime: '',
+          phone: '',
+          email: ''
+        });
+        setGdprAgreed(false);
+        setSubmitted(false);
+        setApplicationId('');
+      }, 5000);
+    } catch (err) {
+      console.error('Error:', err);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   if (submitted) {
@@ -118,7 +137,7 @@ const Apply = () => {
               and contact you soon regarding your application for <strong>{formData.rank}</strong>.
             </p>
             <p style={{ marginTop: '2rem', color: '#777' }}>
-              Application ID: {Date.now().toString().slice(-8)}
+              Application ID: {applicationId || 'Pending'}
             </p>
           </div>
         </div>
