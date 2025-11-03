@@ -97,14 +97,7 @@
   border-top: 2px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.5rem;
   margin-top: 2rem;
-}
-
-.footer-bottom-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  text-align: center;
 }
 
 .footer-bottom p {
@@ -113,20 +106,15 @@
   font-size: 0.95rem;
 }
 
-.footer-legal-links {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.footer-legal-links a {
+.footer-bottom a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-legal-links a:hover {
+.footer-bottom a:hover {
   color: var(--marine-blue-light);
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
