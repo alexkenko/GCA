@@ -9,8 +9,7 @@ const Home = () => {
           <h1>Welcome to Georgian Crewing Agency</h1>
           <p className="hero-subtitle">Providing Qualified Marine Professionals to Shipowners Worldwide</p>
           <div className="hero-buttons">
-            <a href="/contact" className="btn btn-primary">Get Started</a>
-            <a href="/services" className="btn btn-secondary">Our Services</a>
+            <a href="/services" className="btn btn-primary">Our Services</a>
           </div>
         </div>
       </section>
