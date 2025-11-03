@@ -34,16 +34,22 @@ export const storage = {
 
   async getApplications() {
     try {
+      console.log('Fetching applications from Supabase...');
       const { data, error } = await supabase
         .from('gca_crew_applications')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw new Error(error.message || 'Failed to fetch applications');
+      }
+      
+      console.log('Fetched applications:', data);
       return data || [];
     } catch (error) {
       console.error('Error fetching applications:', error);
-      return [];
+      throw error; // Re-throw so dashboard can handle it
     }
   },
 

@@ -10,21 +10,20 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
-    loadApplications();
-  }, [statusFilter]);
-
-  const checkAuth = () => {
     const session = storage.getAdminSession();
     if (!session) {
       navigate('/admin/login');
+      return;
     }
-  };
+    loadApplications();
+  }, [statusFilter, navigate]);
 
   const loadApplications = async () => {
     setLoading(true);
     try {
+      console.log('Loading applications from Supabase...');
       let apps = await storage.getApplications();
+      console.log('Applications loaded:', apps);
       
       if (statusFilter !== 'all') {
         apps = apps.filter(app => app.status === statusFilter);
@@ -33,6 +32,7 @@ const AdminDashboard = () => {
       setApplications(apps);
     } catch (error) {
       console.error('Error loading applications:', error);
+      alert('Error loading applications: ' + (error.message || 'Unknown error'));
     } finally {
       setLoading(false);
     }
