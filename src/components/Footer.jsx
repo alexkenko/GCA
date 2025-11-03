@@ -10,6 +10,11 @@ const Footer = () => {
           <div className="footer-section">
             <h3>Georgian Crewing Agency</h3>
             <p>Providing qualified marine professionals to shipowners worldwide. Your trusted partner in maritime crewing services.</p>
+            <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '8px', fontSize: '0.9rem' }}>
+              <p style={{ marginBottom: '0.5rem' }}><strong>Certified:</strong></p>
+              <p style={{ marginBottom: '0.25rem' }}>სსიპ "საზღვაო ტრანსპორტის სააგენტო"</p>
+              <p style={{ marginBottom: '0.25rem' }}>ISO 9001:2015 | MLC 2006</p>
+            </div>
             <div className="footer-contact">
               <p><strong>Address:</strong> Maiakovski Ave, N41, Batumi, Georgia</p>
               <p><strong>Phone:</strong> 593 10 78 78; 592 44 44 36</p>

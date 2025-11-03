@@ -35,6 +35,9 @@ const Services = () => {
               <li>Background checks</li>
               <li>Medical clearance</li>
             </ul>
+            <p style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(0, 51, 102, 0.05)', borderRadius: '8px', fontSize: '0.95rem' }}>
+              <strong>Our Certifications:</strong> სსიპ "საზღვაო ტრანსპორტის სააგენტო", ISO 9001:2015, MLC 2006
+            </p>
           </div>
 
           <div className="service-card">

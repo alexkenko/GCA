@@ -14,6 +14,11 @@ const AboutUs = () => {
             qualified marine professionals to shipowners worldwide. We serve shipowners of various 
             vessel types, ensuring they receive skilled and certified crew members for their operations.
           </p>
+          <p style={{ marginTop: '1rem', fontWeight: 600, color: 'var(--marine-blue-dark)' }}>
+            <strong>Certified Excellence:</strong> GCA holds სსიპ "საზღვაო ტრანსპორტის სააგენტო", 
+            ISO 9001:2015 (Quality Management System), and MLC 2006 (Maritime Labour Convention) certifications, 
+            demonstrating our commitment to international standards and quality service delivery.
+          </p>
         </section>
 
         <section className="content-section">
