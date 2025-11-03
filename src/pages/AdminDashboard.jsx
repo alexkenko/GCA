@@ -148,24 +148,32 @@ const AdminDashboard = () => {
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                     <div>
-                      <strong>Rank Applied For:</strong>
-                      <p>{app.rank_applied_for || app.rank}</p>
+                      <strong>Name:</strong>
+                      <p>{app.name || 'N/A'}</p>
                     </div>
                     <div>
-                      <strong>Experience (Contracts):</strong>
-                      <p>{app.experience_contracts || app.contracts}</p>
+                      <strong>Surname:</strong>
+                      <p>{app.surname || 'N/A'}</p>
+                    </div>
+                    <div>
+                      <strong>Rank Applied For:</strong>
+                      <p>{app.rank_applied_for || app.rank || 'N/A'}</p>
+                    </div>
+                    <div>
+                      <strong>Experience (Number of Contracts):</strong>
+                      <p>{app.experience_contracts !== null && app.experience_contracts !== undefined ? app.experience_contracts : (app.contracts || 'N/A')}</p>
                     </div>
                     <div>
                       <strong>Total Sea Time (Months):</strong>
-                      <p>{app.experience_sea_time_months || app.seaTime}</p>
+                      <p>{app.experience_sea_time_months !== null && app.experience_sea_time_months !== undefined ? app.experience_sea_time_months : (app.seaTime || 'N/A')}</p>
                     </div>
                     <div>
-                      <strong>Phone:</strong>
-                      <p><a href={`tel:${app.phone_number || app.phone}`}>{app.phone_number || app.phone}</a></p>
+                      <strong>Phone Number:</strong>
+                      <p><a href={`tel:${app.phone_number || app.phone}`}>{app.phone_number || app.phone || 'N/A'}</a></p>
                     </div>
                     <div>
-                      <strong>Email:</strong>
-                      <p><a href={`mailto:${app.email_address || app.email}`}>{app.email_address || app.email}</a></p>
+                      <strong>Email Address:</strong>
+                      <p><a href={`mailto:${app.email_address || app.email}`}>{app.email_address || app.email || 'N/A'}</a></p>
                     </div>
                     <div>
                       <strong>GDPR Agreed:</strong>
