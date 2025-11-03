@@ -390,6 +390,11 @@
   margin-top: 2rem;
 }
 
+.contact-content-single {
+  max-width: 800px;
+  margin: 2rem auto 0;
+}
+
 .contact-info {
   background: white;
   padding: 2.5rem;
