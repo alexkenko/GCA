@@ -3,12 +3,11 @@
 // In a real application, use proper authentication with hashed passwords
 
 export const ADMIN_CREDENTIALS = {
-  email: 'admin@gcagency.ge',
-  // Default password - CHANGE THIS IN PRODUCTION!
-  password: 'admin123' // You should change this to a secure password
+  username: 'Capitanio',
+  password: 'Steven@Gerrard8'
 };
 
-export const isAdminEmail = (email) => {
-  return email === ADMIN_CREDENTIALS.email;
+export const isAdminUsername = (username) => {
+  return username === ADMIN_CREDENTIALS.username;
 };
 

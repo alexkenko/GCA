@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../utils/storage';
-import { ADMIN_CREDENTIALS, isAdminEmail } from '../config/admin';
+import { ADMIN_CREDENTIALS, isAdminUsername } from '../config/admin';
 import '../styles/Pages.css';
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,8 +26,8 @@ const AdminLogin = () => {
 
     // Simple authentication
     setTimeout(() => {
-      if (!isAdminEmail(email)) {
-        setError('Invalid email address.');
+      if (!isAdminUsername(username)) {
+        setError('Invalid username.');
         setLoading(false);
         return;
       }
@@ -39,7 +39,7 @@ const AdminLogin = () => {
       }
 
       // Set session
-      storage.setAdminSession(email);
+      storage.setAdminSession(username);
       
       // Redirect to dashboard
       navigate('/admin/dashboard');
@@ -67,14 +67,14 @@ const AdminLogin = () => {
             )}
 
             <div className="form-group">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="username">Username</label>
               <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
-                placeholder="admin@gcagency.ge"
+                placeholder="Enter your username"
                 disabled={loading}
               />
             </div>
