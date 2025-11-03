@@ -13,13 +13,16 @@ const GDPRCompliance = () => {
             <h2>1. Our Commitment</h2>
             <p>
               Georgian Crewing Agency is committed to compliance with the General Data Protection Regulation (GDPR) 
-              and protecting the privacy rights of all individuals whose data we process.
+              of the European Union and the Personal Data Protection Act of Georgia. We protect the privacy rights 
+              of all individuals whose data we process, regardless of their location.
             </p>
 
             <h2>2. Data Controller</h2>
             <p>
-              Georgian Crewing Agency acts as a data controller for personal information collected in the course of 
-              providing crewing services. We are responsible for ensuring that personal data is processed lawfully and securely.
+              Georgian Crewing Agency, located at Maiakovski Ave, N41, Batumi, Georgia, acts as a data controller 
+              for personal information collected in the course of providing crewing services. We are responsible for 
+              ensuring that personal data is processed lawfully and securely in accordance with both EU GDPR (Regulation 
+              (EU) 2016/679) and Georgian Personal Data Protection Act (Law of Georgia on Personal Data Protection, 2011).
             </p>
 
             <h2>3. Legal Basis for Processing</h2>
@@ -61,19 +64,45 @@ const GDPRCompliance = () => {
 
             <h2>7. International Transfers</h2>
             <p>
-              When transferring data outside the EEA, we ensure appropriate safeguards are in place to protect your 
-              personal information.
+              When transferring data outside the EEA or Georgia, we ensure appropriate safeguards are in place to protect 
+              your personal information, including standard contractual clauses and adequacy decisions as recognized by 
+              both EU and Georgian regulations.
             </p>
 
-            <h2>8. Exercising Your Rights</h2>
+            <h2>8. Georgian Personal Data Protection Act Compliance</h2>
             <p>
-              To exercise your GDPR rights, please contact us at <a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a>. 
-              We will respond to your request within one month.
+              In addition to EU GDPR compliance, we adhere to the Georgian Personal Data Protection Act, which includes:
+            </p>
+            <ul className="expertise-list">
+              <li>Registration with the Georgian Personal Data Protection Inspector</li>
+              <li>Compliance with data processing principles and requirements</li>
+              <li>Respect for data subject rights under Georgian law</li>
+              <li>Proper handling of cross-border data transfers</li>
+            </ul>
+
+            <h2>9. Exercising Your Rights</h2>
+            <p>
+              To exercise your rights under both EU GDPR and Georgian Personal Data Protection Act, please contact us 
+              at <a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a>. We will respond to your request within 
+              one month (as required by GDPR) or within the timeframe specified by Georgian law.
             </p>
 
-            <h2>9. Data Protection Officer</h2>
+            <h2>10. Data Protection Officer</h2>
             <p>
-              For data protection inquiries, contact our data protection officer at the same email address.
+              For data protection inquiries under EU GDPR and Georgian regulations, contact our data protection officer 
+              at <a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a>.
+            </p>
+
+            <h2>11. Complaints</h2>
+            <p>
+              You have the right to lodge a complaint with:
+            </p>
+            <ul className="expertise-list">
+              <li><strong>EU Supervisory Authority:</strong> Your local data protection authority in your EU member state</li>
+              <li><strong>Georgian Authority:</strong> Personal Data Protection Inspector of Georgia</li>
+            </ul>
+            <p>
+              However, we encourage you to contact us first so we may resolve any concerns directly.
             </p>
           </section>
         </div>

@@ -17,6 +17,7 @@ const Header = () => {
           <Link to="/our-values">Our Values</Link>
           <Link to="/certification">Certification</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/apply">Apply</Link>
         </nav>
       </div>
     </header>
