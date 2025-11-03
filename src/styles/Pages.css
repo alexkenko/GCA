@@ -16,12 +16,17 @@
   min-height: calc(100vh - 80px);
   padding-top: 2rem;
   background: linear-gradient(to bottom, #F8F9FA 0%, #FFFFFF 100%);
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  width: 100%;
+  position: relative;
 }
 
 /* Hero Section - Luxury Marine Theme */
@@ -31,7 +36,8 @@
   padding: 6rem 2rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  width: 100%;
 }
 
 .hero::before {
@@ -121,7 +127,7 @@
 }
 
 .luxury-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
 }
 
@@ -179,10 +185,10 @@
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 51, 102, 0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-top: 4px solid var(--marine-blue-light);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .feature-card::before {
@@ -196,7 +202,7 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
 }
 
@@ -302,7 +308,7 @@
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
 }
 
@@ -365,7 +371,7 @@
 }
 
 .value-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-5px) scale(1.01);
   box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
   border-color: var(--marine-blue-light);
 }
