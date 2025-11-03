@@ -7,7 +7,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <div className="logo">
-          <img src="/images/gca-logo.jpg?v=3" alt="Georgian Crewing Agency Logo" />
+          <img src="/images/gca-logo.jpg?v=4" alt="Georgian Crewing Agency Logo" />
           <span className="company-name">Georgian Crewing Agency</span>
         </div>
         <nav className="nav-menu">
