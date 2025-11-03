@@ -130,7 +130,6 @@
   margin-bottom: 1.5rem;
   font-size: 1.75rem;
   font-weight: 700;
-  border-bottom: 3px solid var(--marine-blue-light);
   padding-bottom: 0.75rem;
 }
 
@@ -227,8 +226,7 @@
   margin-bottom: 1.5rem;
   font-size: 2.25rem;
   font-weight: 700;
-  border-left: 5px solid var(--marine-blue-light);
-  padding-left: 1.5rem;
+  padding-left: 0;
 }
 
 .content-section p {
@@ -404,7 +402,6 @@
   margin-bottom: 1.25rem;
   font-size: 2rem;
   font-weight: 700;
-  border-bottom: 3px solid var(--marine-blue-light);
   padding-bottom: 1rem;
 }
 
@@ -417,7 +414,6 @@
   padding: 1.5rem;
   background: var(--marine-blue-pale);
   border-radius: 8px;
-  border-left: 4px solid var(--marine-blue);
 }
 
 .contact-item h3 {
@@ -456,7 +452,6 @@
   margin-bottom: 2rem;
   font-size: 2rem;
   font-weight: 700;
-  border-bottom: 3px solid var(--marine-blue-light);
   padding-bottom: 1rem;
 }
 
@@ -525,7 +520,6 @@
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 700;
-  border-bottom: 3px solid var(--marine-blue-light);
   padding-bottom: 0.75rem;
 }
 
