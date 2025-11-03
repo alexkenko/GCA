@@ -1,55 +1,83 @@
-// Simple storage utility for applications
-// In production, replace with API calls to your backend
+// Storage utility for applications using Supabase
+import { supabase } from '../lib/supabase';
 
-const STORAGE_KEY = 'crew_applications';
 const ADMIN_STORAGE_KEY = 'admin_session';
 
 export const storage = {
   // Application storage
-  saveApplication: (application) => {
-    const applications = storage.getApplications();
-    const newApplication = {
-      ...application,
-      id: `app_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      created_at: new Date().toISOString(),
-      status: 'pending'
-    };
-    applications.push(newApplication);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(applications));
-    return newApplication;
-  },
+  async saveApplication(application) {
+    try {
+      const { data, error } = await supabase
+        .from('gca_crew_applications')
+        .insert([{
+          name: application.name,
+          surname: application.surname,
+          rank_applied_for: application.rank_applied_for,
+          experience_contracts: application.experience_contracts,
+          experience_sea_time_months: application.experience_sea_time_months,
+          phone_number: application.phone_number,
+          email_address: application.email_address,
+          gdpr_agreed: application.gdpr_agreed || false,
+          application_id: application.application_id,
+          status: 'pending'
+        }])
+        .select()
+        .single();
 
-  getApplications: () => {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
-  },
-
-  updateApplication: (id, updates) => {
-    const applications = storage.getApplications();
-    const index = applications.findIndex(app => app.id === id);
-    if (index !== -1) {
-      applications[index] = {
-        ...applications[index],
-        ...updates,
-        updated_at: new Date().toISOString()
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(applications));
-      return applications[index];
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error saving application:', error);
+      throw error;
     }
-    return null;
   },
 
-  // Admin session
-  setAdminSession: (email) => {
+  async getApplications() {
+    try {
+      const { data, error } = await supabase
+        .from('gca_crew_applications')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      return data || [];
+    } catch (error) {
+      console.error('Error fetching applications:', error);
+      return [];
+    }
+  },
+
+  async updateApplication(id, updates) {
+    try {
+      const { data, error } = await supabase
+        .from('gca_crew_applications')
+        .update({
+          ...updates,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Error updating application:', error);
+      throw error;
+    }
+  },
+
+  // Admin session (still using localStorage for client-side session)
+  setAdminSession(username) {
     const session = {
-      email,
+      username,
       loginTime: new Date().toISOString(),
       expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
     };
     localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(session));
   },
 
-  getAdminSession: () => {
+  getAdminSession() {
     const data = localStorage.getItem(ADMIN_STORAGE_KEY);
     if (!data) return null;
     
@@ -61,7 +89,7 @@ export const storage = {
     return session;
   },
 
-  clearAdminSession: () => {
+  clearAdminSession() {
     localStorage.removeItem(ADMIN_STORAGE_KEY);
   }
 };

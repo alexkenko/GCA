@@ -74,7 +74,7 @@ const Apply = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) {
@@ -85,8 +85,8 @@ const Apply = () => {
     const applicationId = Date.now().toString().slice(-8);
     
     try {
-      // Save to local storage (in production, replace with API call)
-      const savedApp = storage.saveApplication({
+      // Save to Supabase
+      const savedApp = await storage.saveApplication({
         name: formData.name,
         surname: formData.surname,
         rank_applied_for: formData.rank,

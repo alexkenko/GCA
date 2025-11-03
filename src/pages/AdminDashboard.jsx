@@ -21,24 +21,31 @@ const AdminDashboard = () => {
     }
   };
 
-  const loadApplications = () => {
+  const loadApplications = async () => {
     setLoading(true);
-    let apps = storage.getApplications();
-    
-    if (statusFilter !== 'all') {
-      apps = apps.filter(app => app.status === statusFilter);
+    try {
+      let apps = await storage.getApplications();
+      
+      if (statusFilter !== 'all') {
+        apps = apps.filter(app => app.status === statusFilter);
+      }
+      
+      setApplications(apps);
+    } catch (error) {
+      console.error('Error loading applications:', error);
+    } finally {
+      setLoading(false);
     }
-    
-    // Sort by most recent
-    apps.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    
-    setApplications(apps);
-    setLoading(false);
   };
 
-  const handleStatusChange = (id, newStatus) => {
-    storage.updateApplication(id, { status: newStatus });
-    loadApplications();
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      await storage.updateApplication(id, { status: newStatus });
+      loadApplications();
+    } catch (error) {
+      console.error('Error updating application:', error);
+      alert('Failed to update application status. Please try again.');
+    }
   };
 
   const handleLogout = () => {
@@ -112,7 +119,7 @@ const AdminDashboard = () => {
                         {app.name} {app.surname}
                       </h2>
                       <p style={{ color: '#777', fontSize: '0.9rem' }}>
-                        Application ID: {app.application_id || app.id.slice(-12)}
+                        Application ID: {app.application_id || app.id?.slice(-12) || 'N/A'}
                       </p>
                       <p style={{ color: '#777', fontSize: '0.9rem' }}>
                         Submitted: {formatDate(app.created_at)}
