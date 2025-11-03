@@ -9,7 +9,6 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <h3>Georgian Crewing Agency</h3>
-            <p>Providing qualified marine professionals to shipowners worldwide. Your trusted partner in maritime crewing services.</p>
             <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '8px', fontSize: '0.9rem' }}>
               <p style={{ marginBottom: '0.5rem' }}><strong>Certified:</strong></p>
               <p style={{ marginBottom: '0.25rem' }}>სსიპ "საზღვაო ტრანსპორტის სააგენტო"</p>
