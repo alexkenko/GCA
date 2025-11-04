@@ -45,11 +45,11 @@ const Apply = () => {
     
     // Sea Service Data (up to 5 entries)
     sea_service: [
-      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' }
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' }
     ]
   });
 
@@ -229,11 +229,11 @@ const Apply = () => {
           endorsement_date_issued: '',
           endorsement_expiry_date: '',
           sea_service: [
-            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
-            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' }
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period_from: '', period_to: '', company: '', flag: '' }
           ]
         });
         setGdprAgreed(false);
@@ -569,7 +569,8 @@ const Apply = () => {
                       <th>Engine / Vessel Type</th>
                       <th>DWT / kW</th>
                       <th>Rank</th>
-                      <th>Period</th>
+                      <th>Period From</th>
+                      <th>Period To</th>
                       <th>Company</th>
                       <th>Flag</th>
                     </tr>
@@ -595,7 +596,8 @@ const Apply = () => {
                         <td><input type="text" value={service.engine_vessel_type} onChange={(e) => handleSeaServiceChange(index, 'engine_vessel_type', e.target.value)} /></td>
                         <td><input type="text" value={service.dwt_kw} onChange={(e) => handleSeaServiceChange(index, 'dwt_kw', e.target.value)} /></td>
                         <td><input type="text" value={service.rank} onChange={(e) => handleSeaServiceChange(index, 'rank', e.target.value)} /></td>
-                        <td><input type="text" placeholder="From - To" value={service.period} onChange={(e) => handleSeaServiceChange(index, 'period', e.target.value)} /></td>
+                        <td><input type="date" value={service.period_from} onChange={(e) => handleSeaServiceChange(index, 'period_from', e.target.value)} /></td>
+                        <td><input type="date" value={service.period_to} onChange={(e) => handleSeaServiceChange(index, 'period_to', e.target.value)} /></td>
                         <td><input type="text" value={service.company} onChange={(e) => handleSeaServiceChange(index, 'company', e.target.value)} /></td>
                         <td><input type="text" value={service.flag} onChange={(e) => handleSeaServiceChange(index, 'flag', e.target.value)} /></td>
                       </tr>
