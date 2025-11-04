@@ -962,6 +962,12 @@
   margin-top: 1.5rem;
 }
 
+/* Mobile card layouts (hidden on desktop) */
+.documents-mobile,
+.sea-service-mobile {
+  display: none;
+}
+
 .documents-table table,
 .sea-service-table table {
   width: 100%;
@@ -1019,26 +1025,124 @@
 }
 
 @media (max-width: 768px) {
-  .documents-table,
-  .sea-service-table {
-    font-size: 0.85rem;
+  /* Hide tables on mobile, show card layout instead */
+  .documents-table table,
+  .sea-service-table table {
+    display: none;
   }
   
-  .documents-table th,
-  .sea-service-table th {
-    padding: 0.5rem;
-    font-size: 0.8rem;
+  /* Show mobile card layout */
+  .documents-mobile,
+  .sea-service-mobile {
+    display: block;
   }
   
-  .documents-table td,
-  .sea-service-table td {
-    padding: 0.5rem;
+  .document-card,
+  .sea-service-card {
+    background: white;
+    border: 2px solid var(--marine-blue-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
   }
   
-  .documents-table input,
-  .sea-service-table input {
-    padding: 0.4rem;
-    font-size: 0.85rem;
+  .document-card h3,
+  .sea-service-card h3 {
+    color: var(--marine-blue-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--marine-blue-light);
+  }
+  
+  .document-card .form-group,
+  .sea-service-card .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .document-card label,
+  .sea-service-card label {
+    display: block;
+    font-weight: 600;
+    color: var(--marine-blue-dark);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .document-card input,
+  .sea-service-card input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid rgba(0, 51, 102, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .document-card input:focus,
+  .sea-service-card input:focus {
+    outline: none;
+    border-color: var(--marine-blue-light);
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+  }
+  
+  /* Position info grid mobile */
+  .position-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .photo-upload-placeholder,
+  .photo-preview-top {
+    min-height: 250px;
+  }
+  
+  .form-section {
+    padding: 1.5rem;
+  }
+  
+  .form-section-title {
+    font-size: 1.25rem;
+  }
+  
+  .luxury-box {
+    padding: 1.5rem;
+  }
+  
+  /* Form inputs mobile optimization */
+  .application-form .form-group input,
+  .application-form .form-group textarea,
+  .application-form .form-group select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.875rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Better spacing for mobile */
+  .application-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Button improvements */
+  .btn {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  /* GDPR checkbox mobile */
+  .gdpr-checkbox {
+    padding: 1.25rem;
+  }
+  
+  .checkbox-label {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 }
 
@@ -1442,5 +1546,16 @@
   .faq-question {
     font-size: 1rem;
     padding: 1.25rem;
+  }
+  
+  /* Container mobile optimization */
+  .container {
+    padding: 0 1rem;
+  }
+  
+  /* Application form mobile */
+  .application-form h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 }

@@ -482,6 +482,7 @@ const Apply = () => {
             <div className="form-section">
               <h2 className="form-section-title">Documents/Certificates Held</h2>
               
+              {/* Desktop Table View */}
               <div className="documents-table">
                 <table>
                   <thead>
@@ -547,12 +548,135 @@ const Apply = () => {
                   </tbody>
                 </table>
               </div>
+
+              {/* Mobile Card View */}
+              <div className="documents-mobile">
+                {/* Passport */}
+                <div className="document-card">
+                  <h3>Passport international</h3>
+                  <div className="form-group">
+                    <label>Document No.</label>
+                    <input type="text" name="passport_document_no" value={formData.passport_document_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>Place Issued</label>
+                    <input type="text" name="passport_place_issued" value={formData.passport_place_issued} onChange={handleChange} />
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Date Issued</label>
+                      <input type="date" name="passport_date_issued" value={formData.passport_date_issued} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Expiry Date</label>
+                      <input type="date" name="passport_expiry_date" value={formData.passport_expiry_date} onChange={handleChange} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* US Visa */}
+                <div className="document-card">
+                  <h3>US Visa</h3>
+                  <div className="form-group">
+                    <label>Document No.</label>
+                    <input type="text" name="us_visa_document_no" value={formData.us_visa_document_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>Place Issued</label>
+                    <input type="text" name="us_visa_place_issued" value={formData.us_visa_place_issued} onChange={handleChange} />
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Date Issued</label>
+                      <input type="date" name="us_visa_date_issued" value={formData.us_visa_date_issued} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Expiry Date</label>
+                      <input type="date" name="us_visa_expiry_date" value={formData.us_visa_expiry_date} onChange={handleChange} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Seaman's Identification Card */}
+                <div className="document-card">
+                  <h3>Seaman's Identification Card</h3>
+                  <div className="form-group">
+                    <label>Document No.</label>
+                    <input type="text" name="seaman_id_document_no" value={formData.seaman_id_document_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>Place Issued</label>
+                    <input type="text" name="seaman_id_place_issued" value={formData.seaman_id_place_issued} onChange={handleChange} />
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Date Issued</label>
+                      <input type="date" name="seaman_id_date_issued" value={formData.seaman_id_date_issued} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Expiry Date</label>
+                      <input type="date" name="seaman_id_expiry_date" value={formData.seaman_id_expiry_date} onChange={handleChange} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* National License */}
+                <div className="document-card">
+                  <h3>National License</h3>
+                  <div className="form-group">
+                    <label>Document No.</label>
+                    <input type="text" name="national_license_document_no" value={formData.national_license_document_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>Place Issued</label>
+                    <input type="text" name="national_license_place_issued" value={formData.national_license_place_issued} onChange={handleChange} />
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Date Issued</label>
+                      <input type="date" name="national_license_date_issued" value={formData.national_license_date_issued} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Expiry Date</label>
+                      <input type="date" name="national_license_expiry_date" value={formData.national_license_expiry_date} onChange={handleChange} />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label>Class (if applicable)</label>
+                    <input type="text" name="national_license_class" value={formData.national_license_class} onChange={handleChange} placeholder="Class: OS" />
+                  </div>
+                </div>
+
+                {/* Endorsement */}
+                <div className="document-card">
+                  <h3>Endorsement</h3>
+                  <div className="form-group">
+                    <label>Document No.</label>
+                    <input type="text" name="endorsement_document_no" value={formData.endorsement_document_no} onChange={handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label>Place Issued</label>
+                    <input type="text" name="endorsement_place_issued" value={formData.endorsement_place_issued} onChange={handleChange} />
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>Date Issued</label>
+                      <input type="date" name="endorsement_date_issued" value={formData.endorsement_date_issued} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Expiry Date</label>
+                      <input type="date" name="endorsement_expiry_date" value={formData.endorsement_expiry_date} onChange={handleChange} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Sea Service Data */}
             <div className="form-section">
               <h2 className="form-section-title">LAST 5 YEARS SEA SERVICE DATA</h2>
               
+              {/* Desktop Table View */}
               <div className="sea-service-table">
                 <table>
                   <thead>
@@ -596,6 +720,97 @@ const Apply = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile Card View */}
+              <div className="sea-service-mobile">
+                {formData.sea_service.map((service, index) => (
+                  <div key={index} className="sea-service-card">
+                    <h3>Vessel {index + 1}</h3>
+                    <div className="form-group">
+                      <label>Vessel Name</label>
+                      <input
+                        type="text"
+                        placeholder="Enter vessel name"
+                        value={service.vessel_name}
+                        onChange={(e) => handleSeaServiceChange(index, 'vessel_name', e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>IMO Number</label>
+                      <input
+                        type="text"
+                        placeholder="Enter IMO number"
+                        value={service.imo_number}
+                        onChange={(e) => handleSeaServiceChange(index, 'imo_number', e.target.value)}
+                      />
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Engine / Vessel Type</label>
+                        <input
+                          type="text"
+                          value={service.engine_vessel_type}
+                          onChange={(e) => handleSeaServiceChange(index, 'engine_vessel_type', e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>DWT / kW</label>
+                        <input
+                          type="text"
+                          value={service.dwt_kw}
+                          onChange={(e) => handleSeaServiceChange(index, 'dwt_kw', e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Rank</label>
+                        <input
+                          type="text"
+                          value={service.rank}
+                          onChange={(e) => handleSeaServiceChange(index, 'rank', e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Period From</label>
+                        <input
+                          type="date"
+                          value={service.period_from}
+                          onChange={(e) => handleSeaServiceChange(index, 'period_from', e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>Period To</label>
+                        <input
+                          type="date"
+                          value={service.period_to}
+                          onChange={(e) => handleSeaServiceChange(index, 'period_to', e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Company</label>
+                        <input
+                          type="text"
+                          value={service.company}
+                          onChange={(e) => handleSeaServiceChange(index, 'company', e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>Flag</label>
+                        <input
+                          type="text"
+                          value={service.flag}
+                          onChange={(e) => handleSeaServiceChange(index, 'flag', e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
