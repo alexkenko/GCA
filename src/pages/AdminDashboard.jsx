@@ -7,6 +7,7 @@ const AdminDashboard = () => {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState('all');
+  const [imageErrors, setImageErrors] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +25,14 @@ const AdminDashboard = () => {
       console.log('Loading applications from Supabase...');
       let apps = await storage.getApplications();
       console.log('Applications loaded:', apps);
+      // Debug: Log photo URLs
+      apps.forEach(app => {
+        if (app.photo_url) {
+          console.log(`Application ${app.id} has photo_url:`, app.photo_url);
+        } else {
+          console.log(`Application ${app.id} has NO photo_url`);
+        }
+      });
       
       if (statusFilter !== 'all') {
         apps = apps.filter(app => app.status === statusFilter);
@@ -189,23 +198,58 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* CV Photo */}
-                  {app.photo_url && (
+                  {(app.photo_url || app.photoUrl) && (
                     <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                       <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1rem' }}>CV Photo</h3>
-                      <img 
-                        src={app.photo_url} 
-                        alt={`${app.first_name || app.name} ${app.surname} - CV Photo`}
-                        style={{
-                          maxWidth: '300px',
-                          maxHeight: '400px',
-                          width: 'auto',
-                          height: 'auto',
-                          border: '3px solid var(--marine-blue-light)',
+                      {imageErrors[app.id] ? (
+                        <div style={{ 
+                          padding: '2rem', 
+                          backgroundColor: '#f8f9fa', 
+                          border: '2px dashed #ccc',
                           borderRadius: '12px',
-                          boxShadow: '0 4px 12px rgba(0, 51, 102, 0.2)',
-                          objectFit: 'contain'
-                        }}
-                      />
+                          color: '#666'
+                        }}>
+                          <p style={{ margin: 0 }}>⚠️ Photo could not be loaded</p>
+                          <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.85rem' }}>URL: {app.photo_url || app.photoUrl}</p>
+                          <a 
+                            href={app.photo_url || app.photoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            style={{ 
+                              display: 'inline-block', 
+                              marginTop: '0.5rem',
+                              color: 'var(--marine-blue)',
+                              textDecoration: 'underline'
+                            }}
+                          >
+                            Open in new tab
+                          </a>
+                        </div>
+                      ) : (
+                        <img 
+                          src={app.photo_url || app.photoUrl} 
+                          alt={`${app.first_name || app.name} ${app.surname} - CV Photo`}
+                          onError={(e) => {
+                            console.error('Image load error for application:', app.id, 'URL:', app.photo_url || app.photoUrl);
+                            setImageErrors(prev => ({ ...prev, [app.id]: true }));
+                          }}
+                          onLoad={() => {
+                            console.log('Image loaded successfully for application:', app.id, 'URL:', app.photo_url || app.photoUrl);
+                          }}
+                          style={{
+                            maxWidth: '300px',
+                            maxHeight: '400px',
+                            width: 'auto',
+                            height: 'auto',
+                            border: '3px solid var(--marine-blue-light)',
+                            borderRadius: '12px',
+                            boxShadow: '0 4px 12px rgba(0, 51, 102, 0.2)',
+                            objectFit: 'contain',
+                            display: 'block',
+                            margin: '0 auto'
+                          }}
+                        />
+                      )}
                     </div>
                   )}
 
