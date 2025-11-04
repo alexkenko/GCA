@@ -15,7 +15,6 @@ const Apply = () => {
     first_name: '',
     place_of_birth: '',
     nationality: '',
-    home_telephone: '',
     mobile_phone: '',
     email_address: '',
     home_address: '',
@@ -203,7 +202,6 @@ const Apply = () => {
           first_name: '',
           place_of_birth: '',
           nationality: '',
-          home_telephone: '',
           mobile_phone: '',
           email_address: '',
           home_address: '',
@@ -430,21 +428,6 @@ const Apply = () => {
                     value={formData.nationality}
                     onChange={handleChange}
                     placeholder="e.g., Georgian"
-                  />
-                </div>
-              </div>
-
-              {/* Phone Numbers - Home telephone then Mobile Phone */}
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="home_telephone">Home telephone</label>
-                  <input
-                    type="tel"
-                    id="home_telephone"
-                    name="home_telephone"
-                    value={formData.home_telephone}
-                    onChange={handleChange}
-                    placeholder="e.g., +995 32 XXX XXX"
                   />
                 </div>
 
