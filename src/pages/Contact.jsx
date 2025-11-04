@@ -23,11 +23,28 @@ const Contact = () => {
 
               <div className="contact-item">
                 <h3>Phone</h3>
-                <p><a href="tel:+995555300088">+995 555 300 088</a> - Office (Working Hours)</p>
-                <p><a href="tel:+995593107878">+995 593 10 78 78</a> - Capt. Guram Shanidze (24/7)</p>
-                <p><a href="tel:+995597040418">+995 597 04 04 18</a> - Mr. Zurab Saladze</p>
-                <p><a href="tel:+995555126992">+995 555 12 69 92</a> - Capt. Archil Varshanidze</p>
-                <p><a href="tel:+995592444436">+995 592 444436</a> - Mr. Tornike Surmanidze (24/7)</p>
+                <div className="phone-grid">
+                  <div className="phone-row">
+                    <div className="phone-number"><a href="tel:+995555300088">+995 555 300 088</a></div>
+                    <div className="phone-name">Office (Working Hours)</div>
+                  </div>
+                  <div className="phone-row">
+                    <div className="phone-number"><a href="tel:+995593107878">+995 593 10 78 78</a></div>
+                    <div className="phone-name">Capt. Guram Shanidze</div>
+                  </div>
+                  <div className="phone-row">
+                    <div className="phone-number"><a href="tel:+995597040418">+995 597 04 04 18</a></div>
+                    <div className="phone-name">Mr. Zurab Saladze</div>
+                  </div>
+                  <div className="phone-row">
+                    <div className="phone-number"><a href="tel:+995555126992">+995 555 12 69 92</a></div>
+                    <div className="phone-name">Capt. Archil Varshanidze</div>
+                  </div>
+                  <div className="phone-row">
+                    <div className="phone-number"><a href="tel:+995592444436">+995 592 444436</a></div>
+                    <div className="phone-name">Mr. Tornike Surmanidze (24/7)</div>
+                  </div>
+                </div>
               </div>
 
               <div className="contact-item">

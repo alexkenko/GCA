@@ -488,6 +488,40 @@
   border-color: #1877F2;
 }
 
+.phone-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 1.5rem;
+  margin-top: 0.75rem;
+  align-items: start;
+}
+
+.phone-row {
+  display: contents;
+}
+
+.phone-number {
+  font-weight: 600;
+  color: var(--marine-blue-dark);
+  white-space: nowrap;
+}
+
+.phone-number a {
+  color: var(--marine-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.phone-number a:hover {
+  color: var(--marine-blue-dark);
+  text-decoration: underline;
+}
+
+.phone-name {
+  color: #444;
+}
+
 .contact-form-container {
   background: white;
   padding: 2.5rem;

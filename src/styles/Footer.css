@@ -108,6 +108,37 @@
   border-color: #1877F2;
 }
 
+.footer-phone-grid {
+  margin-top: 0.5rem;
+}
+
+.footer-phone-grid p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-phone-grid .phone-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  align-items: start;
+}
+
+.footer-phone-grid .phone-row {
+  display: contents;
+}
+
+.footer-phone-grid .phone-number {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+}
+
+.footer-phone-grid .phone-name {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
 .footer-section ul {
   list-style: none;
   padding: 0;

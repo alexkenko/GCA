@@ -11,7 +11,31 @@ const Footer = () => {
             <h3>Georgian Crewing Agency</h3>
             <div className="footer-contact">
               <p><strong>Address:</strong> Maiakovski Ave, N41, Batumi, Georgia</p>
-              <p><strong>Phone:</strong> +995 555 300 088 (Office); +995 593 10 78 78 (Capt. Guram Shanidze - 24/7); +995 597 04 04 18 (Mr. Zurab Saladze); +995 555 12 69 92 (Capt. Archil Varshanidze); +995 592 444436 (Mr. Tornike Surmanidze - 24/7)</p>
+              <div className="footer-phone-grid">
+                <p><strong>Phone:</strong></p>
+                <div className="phone-grid">
+                  <div className="phone-row">
+                    <span className="phone-number">+995 555 300 088</span>
+                    <span className="phone-name">Office (Working Hours)</span>
+                  </div>
+                  <div className="phone-row">
+                    <span className="phone-number">+995 593 10 78 78</span>
+                    <span className="phone-name">Capt. Guram Shanidze</span>
+                  </div>
+                  <div className="phone-row">
+                    <span className="phone-number">+995 597 04 04 18</span>
+                    <span className="phone-name">Mr. Zurab Saladze</span>
+                  </div>
+                  <div className="phone-row">
+                    <span className="phone-number">+995 555 12 69 92</span>
+                    <span className="phone-name">Capt. Archil Varshanidze</span>
+                  </div>
+                  <div className="phone-row">
+                    <span className="phone-number">+995 592 444436</span>
+                    <span className="phone-name">Mr. Tornike Surmanidze (24/7)</span>
+                  </div>
+                </div>
+              </div>
               <p><strong>Email:</strong> <a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a></p>
               <div className="social-media">
                 <a 
