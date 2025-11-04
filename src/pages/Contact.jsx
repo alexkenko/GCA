@@ -23,10 +23,11 @@ const Contact = () => {
 
               <div className="contact-item">
                 <h3>Phone</h3>
-                <p><a href="tel:+995593107878">+995 593 10 78 78</a></p>
-                <p><a href="tel:+995592444436">+995 592 44 44 36</a></p>
-                <p><a href="tel:+995555126992">+995 555 12 69 92</a></p>
-                <p><a href="tel:+995597040418">+995 597 04 04 18</a></p>
+                <p><a href="tel:+995555300088">+995 555 300 088</a> - Office (Working Hours)</p>
+                <p><a href="tel:+995593107878">+995 593 10 78 78</a> - Capt. Guram Shanidze (24/7)</p>
+                <p><a href="tel:+995597040418">+995 597 04 04 18</a> - Mr. Zurab Saladze</p>
+                <p><a href="tel:+995555126992">+995 555 12 69 92</a> - Capt. Archil Varshanidze</p>
+                <p><a href="tel:+995592444436">+995 592 444436</a> - Mr. Tornike Surmanidze</p>
               </div>
 
               <div className="contact-item">
