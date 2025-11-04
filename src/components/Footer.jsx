@@ -11,7 +11,7 @@ const Footer = () => {
             <h3>Georgian Crewing Agency</h3>
             <div className="footer-contact">
               <p><strong>Address:</strong> Maiakovski Ave, N41, Batumi, Georgia</p>
-              <p><strong>Phone:</strong> 593 10 78 78; 592 44 44 36</p>
+              <p><strong>Phone:</strong> +995 593 10 78 78; +995 592 44 44 36; +995 555 12 69 92; +995 597 04 04 18</p>
               <p><strong>Email:</strong> <a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a></p>
             </div>
           </div>
