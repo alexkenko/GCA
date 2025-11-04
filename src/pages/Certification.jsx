@@ -54,11 +54,11 @@ const Certification = () => {
             <div className="certificate-embed">
               <iframe
                 title="ISO Certificate"
-                src="/certificates/ISO-GeoGeorgian_crewing_agency.pdf"
+                src="/certificates/ISO GCA.pdf"
                 loading="lazy"
               />
             </div>
-            <a className="btn btn-secondary" href="/certificates/ISO-GeoGeorgian_crewing_agency.pdf" target="_blank" rel="noreferrer">
+            <a className="btn btn-secondary" href="/certificates/ISO GCA.pdf" target="_blank" rel="noreferrer">
               View / Download
             </a>
           </article>
@@ -68,11 +68,11 @@ const Certification = () => {
             <div className="certificate-embed">
               <iframe
                 title="MLC Certificate"
-                src="/certificates/MLC-Geogeorgian_crewing_agency.pdf"
+                src="/certificates/MLC Certificate 1.4 ENG - GCA.pdf"
                 loading="lazy"
               />
             </div>
-            <a className="btn btn-secondary" href="/certificates/MLC-Geogeorgian_crewing_agency.pdf" target="_blank" rel="noreferrer">
+            <a className="btn btn-secondary" href="/certificates/MLC Certificate 1.4 ENG - GCA.pdf" target="_blank" rel="noreferrer">
               View / Download
             </a>
           </article>
