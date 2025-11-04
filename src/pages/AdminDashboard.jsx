@@ -198,7 +198,7 @@ const AdminDashboard = () => {
                   </div>
 
                   {/* CV Photo */}
-                  {(app.photo_url || app.photoUrl) && (
+                  {(app.photo_url || app.photoUrl) ? (
                     <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                       <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1rem' }}>CV Photo</h3>
                       {imageErrors[app.id] ? (
@@ -250,6 +250,11 @@ const AdminDashboard = () => {
                           }}
                         />
                       )}
+                    </div>
+                  ) : (
+                    <div style={{ marginBottom: '2rem', textAlign: 'center', padding: '2rem', backgroundColor: '#f8f9fa', border: '2px dashed #ccc', borderRadius: '12px', color: '#666' }}>
+                      <p style={{ margin: 0 }}>📷 No photo uploaded</p>
+                      <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.85rem' }}>This application was submitted without a CV photo.</p>
                     </div>
                   )}
 
