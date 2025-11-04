@@ -4,13 +4,53 @@ import '../styles/Pages.css';
 
 const Apply = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    // Position Information
+    position_applied_for: '',
+    date_of_availability: '',
+    last_salary: '',
+    
+    // General Information
     surname: '',
-    rank: '',
-    contracts: '',
-    seaTime: '',
-    phone: '',
-    email: ''
+    date_of_birth: '',
+    first_name: '',
+    place_of_birth: '',
+    nationality: '',
+    home_telephone: '',
+    mobile_phone: '',
+    email_address: '',
+    home_address: '',
+    
+    // Documents/Certificates
+    passport_document_no: '',
+    passport_place_issued: '',
+    passport_date_issued: '',
+    passport_expiry_date: '',
+    us_visa_document_no: '',
+    us_visa_place_issued: '',
+    us_visa_date_issued: '',
+    us_visa_expiry_date: '',
+    seaman_id_document_no: '',
+    seaman_id_place_issued: '',
+    seaman_id_date_issued: '',
+    seaman_id_expiry_date: '',
+    national_license_document_no: '',
+    national_license_place_issued: '',
+    national_license_date_issued: '',
+    national_license_expiry_date: '',
+    national_license_class: '',
+    endorsement_document_no: '',
+    endorsement_place_issued: '',
+    endorsement_date_issued: '',
+    endorsement_expiry_date: '',
+    
+    // Sea Service Data (up to 5 entries)
+    sea_service: [
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+      { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' }
+    ]
   });
 
   const [gdprAgreed, setGdprAgreed] = useState(false);
@@ -30,41 +70,40 @@ const Apply = () => {
       ...formData,
       [name]: value
     });
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
     }
   };
 
+  const handleSeaServiceChange = (index, field, value) => {
+    const newSeaService = [...formData.sea_service];
+    newSeaService[index][field] = value;
+    setFormData({
+      ...formData,
+      sea_service: newSeaService
+    });
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+    // Required fields
+    if (!formData.position_applied_for.trim()) {
+      newErrors.position_applied_for = 'Position applied for is required';
     }
     if (!formData.surname.trim()) {
       newErrors.surname = 'Surname is required';
     }
-    if (!formData.rank.trim()) {
-      newErrors.rank = 'Rank Applied for is required';
+    if (!formData.first_name.trim()) {
+      newErrors.first_name = 'First name is required';
     }
-    if (!formData.contracts.trim()) {
-      newErrors.contracts = 'Number of Contracts is required';
-    } else if (isNaN(formData.contracts) || parseInt(formData.contracts) < 0) {
-      newErrors.contracts = 'Please enter a valid number';
+    if (!formData.mobile_phone.trim()) {
+      newErrors.mobile_phone = 'Mobile Phone is required';
     }
-    if (!formData.seaTime.trim()) {
-      newErrors.seaTime = 'Total Sea Time is required';
-    } else if (isNaN(formData.seaTime) || parseInt(formData.seaTime) < 0) {
-      newErrors.seaTime = 'Please enter a valid number of months';
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone Number is required';
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email Address is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+    if (!formData.email_address.trim()) {
+      newErrors.email_address = 'Email Address is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_address)) {
+      newErrors.email_address = 'Please enter a valid email address';
     }
     if (!gdprAgreed) {
       newErrors.gdpr = 'You must agree to GDPR terms to submit your application';
@@ -81,44 +120,67 @@ const Apply = () => {
       return;
     }
 
-    // Generate application ID
     const applicationId = Date.now().toString().slice(-8);
     
     try {
       console.log('Submitting application...', formData);
       
-      // Save to Supabase
       const savedApp = await storage.saveApplication({
-        name: formData.name,
-        surname: formData.surname,
-        rank_applied_for: formData.rank,
-        experience_contracts: parseInt(formData.contracts),
-        experience_sea_time_months: parseInt(formData.seaTime),
-        phone_number: formData.phone,
-        email_address: formData.email,
+        ...formData,
         gdpr_agreed: gdprAgreed,
         application_id: applicationId,
-        status: 'pending'
+        status: 'pending',
+        submitted_at: new Date().toISOString()
       });
 
       console.log('Application saved successfully:', savedApp);
       
       setApplicationId(applicationId);
       setSubmitted(true);
-      
-      // Scroll to top immediately
       window.scrollTo({ top: 0, behavior: 'smooth' });
       
-      // Reset form after 5 seconds
       setTimeout(() => {
         setFormData({
-          name: '',
+          position_applied_for: '',
+          date_of_availability: '',
+          last_salary: '',
           surname: '',
-          rank: '',
-          contracts: '',
-          seaTime: '',
-          phone: '',
-          email: ''
+          date_of_birth: '',
+          first_name: '',
+          place_of_birth: '',
+          nationality: '',
+          home_telephone: '',
+          mobile_phone: '',
+          email_address: '',
+          home_address: '',
+          passport_document_no: '',
+          passport_place_issued: '',
+          passport_date_issued: '',
+          passport_expiry_date: '',
+          us_visa_document_no: '',
+          us_visa_place_issued: '',
+          us_visa_date_issued: '',
+          us_visa_expiry_date: '',
+          seaman_id_document_no: '',
+          seaman_id_place_issued: '',
+          seaman_id_date_issued: '',
+          seaman_id_expiry_date: '',
+          national_license_document_no: '',
+          national_license_place_issued: '',
+          national_license_date_issued: '',
+          national_license_expiry_date: '',
+          national_license_class: '',
+          endorsement_document_no: '',
+          endorsement_place_issued: '',
+          endorsement_date_issued: '',
+          endorsement_expiry_date: '',
+          sea_service: [
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' },
+            { vessel_name: '', imo_number: '', engine_vessel_type: '', dwt_kw: '', rank: '', period: '', company: '', flag: '' }
+          ]
         });
         setGdprAgreed(false);
         setSubmitted(false);
@@ -138,7 +200,7 @@ const Apply = () => {
             <h1 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem' }}>Thank You!</h1>
             <p style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
               Your application has been successfully submitted. Our team will review your details 
-              and contact you soon regarding your application for <strong>{formData.rank}</strong>.
+              and contact you soon regarding your application for <strong>{formData.position_applied_for}</strong>.
             </p>
             <p style={{ marginTop: '2rem', color: '#777' }}>
               Application ID: {applicationId || 'Pending'}
@@ -153,119 +215,300 @@ const Apply = () => {
     <div className="page-container">
       <div className="container">
         <div className="luxury-box">
-          <h1>Crew Application</h1>
-          <p style={{ marginBottom: '2rem', color: '#555' }}>
-            Complete the form below to apply for a position with Georgian Crewing Agency. 
-            All fields are required.
-          </p>
-
+          <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>APPLICATION FORM</h1>
+          
           <form className="application-form" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={errors.name ? 'error' : ''}
-                  placeholder="Enter your first name"
-                />
-                {errors.name && <span className="error-message">{errors.name}</span>}
+            {/* Position Information */}
+            <div className="form-section">
+              <h2 className="form-section-title">Position Information</h2>
+              
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="position_applied_for">Position applied for *</label>
+                  <input
+                    type="text"
+                    id="position_applied_for"
+                    name="position_applied_for"
+                    value={formData.position_applied_for}
+                    onChange={handleChange}
+                    className={errors.position_applied_for ? 'error' : ''}
+                    placeholder="e.g., Deck Officer, Engine Officer, Captain, etc."
+                  />
+                  {errors.position_applied_for && <span className="error-message">{errors.position_applied_for}</span>}
+                </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="surname">Surname *</label>
-                <input
-                  type="text"
-                  id="surname"
-                  name="surname"
-                  value={formData.surname}
-                  onChange={handleChange}
-                  className={errors.surname ? 'error' : ''}
-                  placeholder="Enter your last name"
-                />
-                {errors.surname && <span className="error-message">{errors.surname}</span>}
-              </div>
-            </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="date_of_availability">Date of availability</label>
+                  <input
+                    type="date"
+                    id="date_of_availability"
+                    name="date_of_availability"
+                    value={formData.date_of_availability}
+                    onChange={handleChange}
+                  />
+                </div>
 
-            <div className="form-group">
-              <label htmlFor="rank">Rank Applied for *</label>
-              <input
-                type="text"
-                id="rank"
-                name="rank"
-                value={formData.rank}
-                onChange={handleChange}
-                className={errors.rank ? 'error' : ''}
-                placeholder="e.g., Deck Officer, Engine Officer, Captain, etc."
-              />
-              {errors.rank && <span className="error-message">{errors.rank}</span>}
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="contracts">Experience in Rank (Number of Contracts) *</label>
-                <input
-                  type="number"
-                  id="contracts"
-                  name="contracts"
-                  value={formData.contracts}
-                  onChange={handleChange}
-                  className={errors.contracts ? 'error' : ''}
-                  placeholder="e.g., 5"
-                  min="0"
-                />
-                {errors.contracts && <span className="error-message">{errors.contracts}</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="seaTime">Experience in Rank: Total Sea Time (Months) *</label>
-                <input
-                  type="number"
-                  id="seaTime"
-                  name="seaTime"
-                  value={formData.seaTime}
-                  onChange={handleChange}
-                  className={errors.seaTime ? 'error' : ''}
-                  placeholder="e.g., 24"
-                  min="0"
-                />
-                {errors.seaTime && <span className="error-message">{errors.seaTime}</span>}
+                <div className="form-group">
+                  <label htmlFor="last_salary">Last salary</label>
+                  <input
+                    type="text"
+                    id="last_salary"
+                    name="last_salary"
+                    value={formData.last_salary}
+                    onChange={handleChange}
+                    placeholder="e.g., USD 3000"
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number *</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={errors.phone ? 'error' : ''}
-                  placeholder="e.g., +995 593 10 78 78"
-                />
-                {errors.phone && <span className="error-message">{errors.phone}</span>}
+            {/* General Information */}
+            <div className="form-section">
+              <h2 className="form-section-title">GENERAL INFORMATION</h2>
+              
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="surname">Surname *</label>
+                  <input
+                    type="text"
+                    id="surname"
+                    name="surname"
+                    value={formData.surname}
+                    onChange={handleChange}
+                    className={errors.surname ? 'error' : ''}
+                  />
+                  {errors.surname && <span className="error-message">{errors.surname}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="date_of_birth">Date of birth</label>
+                  <input
+                    type="date"
+                    id="date_of_birth"
+                    name="date_of_birth"
+                    value={formData.date_of_birth}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="first_name">First name *</label>
+                  <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                    className={errors.first_name ? 'error' : ''}
+                  />
+                  {errors.first_name && <span className="error-message">{errors.first_name}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="place_of_birth">Place of birth</label>
+                  <input
+                    type="text"
+                    id="place_of_birth"
+                    name="place_of_birth"
+                    value={formData.place_of_birth}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="nationality">Nationality</label>
+                  <input
+                    type="text"
+                    id="nationality"
+                    name="nationality"
+                    value={formData.nationality}
+                    onChange={handleChange}
+                    placeholder="e.g., Georgian"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="home_telephone">Home telephone</label>
+                  <input
+                    type="tel"
+                    id="home_telephone"
+                    name="home_telephone"
+                    value={formData.home_telephone}
+                    onChange={handleChange}
+                    placeholder="e.g., +995 32 XXX XXX"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="mobile_phone">Mobile Phone *</label>
+                  <input
+                    type="tel"
+                    id="mobile_phone"
+                    name="mobile_phone"
+                    value={formData.mobile_phone}
+                    onChange={handleChange}
+                    className={errors.mobile_phone ? 'error' : ''}
+                    placeholder="e.g., +995 593 10 78 78"
+                  />
+                  {errors.mobile_phone && <span className="error-message">{errors.mobile_phone}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email_address">Email address *</label>
+                  <input
+                    type="email"
+                    id="email_address"
+                    name="email_address"
+                    value={formData.email_address}
+                    onChange={handleChange}
+                    className={errors.email_address ? 'error' : ''}
+                    placeholder="your.email@example.com"
+                  />
+                  {errors.email_address && <span className="error-message">{errors.email_address}</span>}
+                </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                <label htmlFor="home_address">Home Address</label>
+                <textarea
+                  id="home_address"
+                  name="home_address"
+                  value={formData.home_address}
                   onChange={handleChange}
-                  className={errors.email ? 'error' : ''}
-                  placeholder="your.email@example.com"
+                  rows="3"
+                  placeholder="Enter your complete home address"
                 />
-                {errors.email && <span className="error-message">{errors.email}</span>}
               </div>
             </div>
 
+            {/* Documents/Certificates */}
+            <div className="form-section">
+              <h2 className="form-section-title">Documents/Certificates Held</h2>
+              
+              <div className="documents-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Document No.</th>
+                      <th>Place Issued</th>
+                      <th>Date Issued</th>
+                      <th>Expiry Date</th>
+                      <th>Class (if applicable)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Passport */}
+                    <tr>
+                      <td><strong>Passport international</strong></td>
+                      <td><input type="text" name="passport_document_no" value={formData.passport_document_no} onChange={handleChange} /></td>
+                      <td><input type="text" name="passport_place_issued" value={formData.passport_place_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="passport_date_issued" value={formData.passport_date_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="passport_expiry_date" value={formData.passport_expiry_date} onChange={handleChange} /></td>
+                      <td></td>
+                    </tr>
+                    
+                    {/* US Visa */}
+                    <tr>
+                      <td><strong>US Visa</strong></td>
+                      <td><input type="text" name="us_visa_document_no" value={formData.us_visa_document_no} onChange={handleChange} /></td>
+                      <td><input type="text" name="us_visa_place_issued" value={formData.us_visa_place_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="us_visa_date_issued" value={formData.us_visa_date_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="us_visa_expiry_date" value={formData.us_visa_expiry_date} onChange={handleChange} /></td>
+                      <td></td>
+                    </tr>
+                    
+                    {/* Seaman's Identification Card */}
+                    <tr>
+                      <td><strong>Seaman's Identification Card</strong></td>
+                      <td><input type="text" name="seaman_id_document_no" value={formData.seaman_id_document_no} onChange={handleChange} /></td>
+                      <td><input type="text" name="seaman_id_place_issued" value={formData.seaman_id_place_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="seaman_id_date_issued" value={formData.seaman_id_date_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="seaman_id_expiry_date" value={formData.seaman_id_expiry_date} onChange={handleChange} /></td>
+                      <td></td>
+                    </tr>
+                    
+                    {/* National License */}
+                    <tr>
+                      <td><strong>National License</strong></td>
+                      <td><input type="text" name="national_license_document_no" value={formData.national_license_document_no} onChange={handleChange} /></td>
+                      <td><input type="text" name="national_license_place_issued" value={formData.national_license_place_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="national_license_date_issued" value={formData.national_license_date_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="national_license_expiry_date" value={formData.national_license_expiry_date} onChange={handleChange} /></td>
+                      <td><input type="text" name="national_license_class" value={formData.national_license_class} onChange={handleChange} placeholder="Class: OS" /></td>
+                    </tr>
+                    
+                    {/* Endorsement */}
+                    <tr>
+                      <td><strong>Endorsement</strong></td>
+                      <td><input type="text" name="endorsement_document_no" value={formData.endorsement_document_no} onChange={handleChange} /></td>
+                      <td><input type="text" name="endorsement_place_issued" value={formData.endorsement_place_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="endorsement_date_issued" value={formData.endorsement_date_issued} onChange={handleChange} /></td>
+                      <td><input type="date" name="endorsement_expiry_date" value={formData.endorsement_expiry_date} onChange={handleChange} /></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Sea Service Data */}
+            <div className="form-section">
+              <h2 className="form-section-title">LAST 5 YEARS SEA SERVICE DATA</h2>
+              
+              <div className="sea-service-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Vessel's Name & IMO Number</th>
+                      <th>Engine / Vessel Type</th>
+                      <th>DWT / kW</th>
+                      <th>Rank</th>
+                      <th>Period</th>
+                      <th>Company</th>
+                      <th>Flag</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {formData.sea_service.map((service, index) => (
+                      <tr key={index}>
+                        <td>
+                          <input
+                            type="text"
+                            placeholder="Vessel Name"
+                            value={service.vessel_name}
+                            onChange={(e) => handleSeaServiceChange(index, 'vessel_name', e.target.value)}
+                            style={{ marginBottom: '0.5rem' }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="IMO Number"
+                            value={service.imo_number}
+                            onChange={(e) => handleSeaServiceChange(index, 'imo_number', e.target.value)}
+                          />
+                        </td>
+                        <td><input type="text" value={service.engine_vessel_type} onChange={(e) => handleSeaServiceChange(index, 'engine_vessel_type', e.target.value)} /></td>
+                        <td><input type="text" value={service.dwt_kw} onChange={(e) => handleSeaServiceChange(index, 'dwt_kw', e.target.value)} /></td>
+                        <td><input type="text" value={service.rank} onChange={(e) => handleSeaServiceChange(index, 'rank', e.target.value)} /></td>
+                        <td><input type="text" placeholder="From - To" value={service.period} onChange={(e) => handleSeaServiceChange(index, 'period', e.target.value)} /></td>
+                        <td><input type="text" value={service.company} onChange={(e) => handleSeaServiceChange(index, 'company', e.target.value)} /></td>
+                        <td><input type="text" value={service.flag} onChange={(e) => handleSeaServiceChange(index, 'flag', e.target.value)} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* GDPR Consent */}
             <div className="form-group gdpr-checkbox">
               <label className="checkbox-label">
                 <input
@@ -280,8 +523,7 @@ const Apply = () => {
                   className={errors.gdpr ? 'error' : ''}
                 />
                 <span>
-                  I agree to the <a href="/gdpr-compliance" target="_blank" rel="noopener noreferrer">GDPR Compliance</a> terms 
-                  and consent to the processing of my personal data in accordance with EU and Georgian data protection regulations. *
+                  I hereby explicitly consent that my personal data can be captured, processed and stored by the crewing agents and prospective employer as is necessary for the company to offer me employment on board one of their vessels under crewing management. This includes, but is not limited to, sharing my data with owners, charterers, port agents, manning agents, travel agents, marine authorities or other organizations. The prospective employer undertakes to use this information solely in connection with assessing whether to offer me employment, and for no other purpose. In accordance with GDPR, I understand I have rights regarding my data, and can contact the crewing agent at any time to exercise these rights. *
                 </span>
               </label>
               {errors.gdpr && <span className="error-message">{errors.gdpr}</span>}
@@ -302,4 +544,3 @@ const Apply = () => {
 };
 
 export default Apply;
-

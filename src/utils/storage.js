@@ -9,17 +9,75 @@ export const storage = {
     try {
       console.log('Attempting to save application to Supabase:', application);
       
+      // Prepare all application data - include all fields from the comprehensive form
       const insertData = {
-        name: application.name,
+        // Position Information
+        position_applied_for: application.position_applied_for || application.rank_applied_for,
+        date_of_availability: application.date_of_availability || null,
+        last_salary: application.last_salary || null,
+        
+        // General Information
         surname: application.surname,
-        rank_applied_for: application.rank_applied_for,
-        experience_contracts: application.experience_contracts,
-        experience_sea_time_months: application.experience_sea_time_months,
-        phone_number: application.phone_number,
-        email_address: application.email_address,
+        date_of_birth: application.date_of_birth || null,
+        first_name: application.first_name || application.name,
+        place_of_birth: application.place_of_birth || null,
+        nationality: application.nationality || null,
+        home_telephone: application.home_telephone || null,
+        mobile_phone: application.mobile_phone || application.phone_number,
+        email_address: application.email_address || application.email,
+        home_address: application.home_address || null,
+        
+        // Documents/Certificates (stored as JSON for flexibility)
+        documents: {
+          passport: {
+            document_no: application.passport_document_no || null,
+            place_issued: application.passport_place_issued || null,
+            date_issued: application.passport_date_issued || null,
+            expiry_date: application.passport_expiry_date || null
+          },
+          us_visa: {
+            document_no: application.us_visa_document_no || null,
+            place_issued: application.us_visa_place_issued || null,
+            date_issued: application.us_visa_date_issued || null,
+            expiry_date: application.us_visa_expiry_date || null
+          },
+          seaman_id: {
+            document_no: application.seaman_id_document_no || null,
+            place_issued: application.seaman_id_place_issued || null,
+            date_issued: application.seaman_id_date_issued || null,
+            expiry_date: application.seaman_id_expiry_date || null
+          },
+          national_license: {
+            document_no: application.national_license_document_no || null,
+            place_issued: application.national_license_place_issued || null,
+            date_issued: application.national_license_date_issued || null,
+            expiry_date: application.national_license_expiry_date || null,
+            class: application.national_license_class || null
+          },
+          endorsement: {
+            document_no: application.endorsement_document_no || null,
+            place_issued: application.endorsement_place_issued || null,
+            date_issued: application.endorsement_date_issued || null,
+            expiry_date: application.endorsement_expiry_date || null
+          }
+        },
+        
+        // Sea Service Data (stored as JSON array)
+        sea_service: application.sea_service || null,
+        
+        // Legacy fields (for backward compatibility)
+        name: application.first_name || application.name || null,
+        rank_applied_for: application.position_applied_for || application.rank_applied_for || null,
+        experience_contracts: application.experience_contracts || null,
+        experience_sea_time_months: application.experience_sea_time_months || null,
+        phone_number: application.mobile_phone || application.phone_number || null,
+        email: application.email_address || application.email || null,
+        
+        // Metadata
         gdpr_agreed: application.gdpr_agreed || false,
         application_id: application.application_id,
-        status: 'pending'
+        status: application.status || 'pending',
+        submitted_at: application.submitted_at || new Date().toISOString()
       };
       
       console.log('Insert data:', insertData);

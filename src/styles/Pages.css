@@ -937,6 +937,111 @@
   color: var(--marine-blue-dark);
 }
 
+/* Form Sections */
+.form-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 51, 102, 0.1);
+}
+
+.form-section-title {
+  color: var(--marine-blue-dark);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--marine-blue-light);
+}
+
+/* Documents and Sea Service Tables */
+.documents-table,
+.sea-service-table {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.documents-table table,
+.sea-service-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+}
+
+.documents-table th,
+.sea-service-table th {
+  background: linear-gradient(135deg, var(--marine-blue-dark) 0%, var(--marine-blue) 100%);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.documents-table td,
+.sea-service-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(0, 51, 102, 0.1);
+  vertical-align: middle;
+}
+
+.documents-table tr:last-child td,
+.sea-service-table tr:last-child td {
+  border-bottom: none;
+}
+
+.documents-table input,
+.sea-service-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 51, 102, 0.2);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.documents-table input:focus,
+.sea-service-table input:focus {
+  outline: none;
+  border-color: var(--marine-blue-light);
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.1);
+}
+
+.documents-table td strong {
+  color: var(--marine-blue-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .documents-table,
+  .sea-service-table {
+    font-size: 0.85rem;
+  }
+  
+  .documents-table th,
+  .sea-service-table th {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .documents-table td,
+  .sea-service-table td {
+    padding: 0.5rem;
+  }
+  
+  .documents-table input,
+  .sea-service-table input {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+}
+
 /* Certification Grid */
 .certificates-grid {
   display: grid;
