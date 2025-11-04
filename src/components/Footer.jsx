@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-content">
-          <div className="footer-section">
+          <div className="footer-section footer-contact-section">
             <h3>Georgian Crewing Agency</h3>
             <div className="footer-contact">
               <p><strong>Address:</strong> Maiakovski Ave, N41, Batumi, Georgia</p>
