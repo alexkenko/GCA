@@ -65,6 +65,9 @@ export const storage = {
         // Sea Service Data (stored as JSON array)
         sea_service: application.sea_service || null,
         
+        // CV Photo URL
+        photo_url: application.photo_url || null,
+        
         // Legacy fields (for backward compatibility)
         name: application.first_name || application.name || null,
         rank_applied_for: application.position_applied_for || application.rank_applied_for || null,
