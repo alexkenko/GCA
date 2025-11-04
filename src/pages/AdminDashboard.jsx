@@ -79,6 +79,38 @@ const AdminDashboard = () => {
     });
   };
 
+  const formatAvailabilityDate = (dateString) => {
+    if (!dateString) return 'N/A';
+
+    const parsed = new Date(dateString);
+    if (Number.isNaN(parsed.getTime())) {
+      return dateString;
+    }
+
+    return parsed.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
+  const formatSalary = (value) => {
+    if (value === null || value === undefined || value === '') {
+      return 'N/A';
+    }
+
+    const numericValue = Number(value);
+    if (Number.isNaN(numericValue)) {
+      return value;
+    }
+
+    return numericValue.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 2
+    });
+  };
+
   if (loading && applications.length === 0) {
     return (
       <div className="page-container">
@@ -208,6 +240,14 @@ const AdminDashboard = () => {
                     <div>
                       <strong>Total Sea Time (Months):</strong>
                       <p>{app.experience_sea_time_months !== null && app.experience_sea_time_months !== undefined ? app.experience_sea_time_months : (app.seaTime || 'N/A')}</p>
+                    </div>
+                    <div>
+                      <strong>Date of Availability:</strong>
+                      <p>{formatAvailabilityDate(app.availability_date || app.availabilityDate)}</p>
+                    </div>
+                    <div>
+                      <strong>Last Salary (USD):</strong>
+                      <p>{formatSalary(app.last_salary ?? app.lastSalary)}</p>
                     </div>
                     <div>
                       <strong>Phone Number:</strong>

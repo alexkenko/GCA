@@ -8,22 +8,24 @@ export const storage = {
   async saveApplication(application) {
     try {
       console.log('Attempting to save application to Supabase:', application);
-      
+
       const insertData = {
         name: application.name,
         surname: application.surname,
         rank_applied_for: application.rank_applied_for,
         experience_contracts: application.experience_contracts,
         experience_sea_time_months: application.experience_sea_time_months,
+        availability_date: application.availability_date,
+        last_salary: application.last_salary,
         phone_number: application.phone_number,
         email_address: application.email_address,
         gdpr_agreed: application.gdpr_agreed || false,
         application_id: application.application_id,
         status: 'pending'
       };
-      
+
       console.log('Insert data:', insertData);
-      
+
       const { data, error } = await supabase
         .from('gca_crew_applications')
         .insert([insertData])
