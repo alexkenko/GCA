@@ -1042,6 +1042,81 @@
   }
 }
 
+/* Photo Upload Styles */
+.photo-upload-container {
+  margin-top: 0.5rem;
+}
+
+.photo-upload-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--marine-blue) 0%, var(--marine-blue-medium) 100%);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.photo-upload-button:hover {
+  background: linear-gradient(135deg, var(--marine-blue-dark) 0%, var(--marine-blue) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+.photo-remove-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.photo-remove-button:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.photo-preview {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--marine-blue-pale);
+  border-radius: 8px;
+  border: 2px solid var(--marine-blue-light);
+}
+
+.photo-preview img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 51, 102, 0.2);
+}
+
+.photo-preview p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.photo-upload-hint {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}
+
 /* Certification Grid */
 .certificates-grid {
   display: grid;

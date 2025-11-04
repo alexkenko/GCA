@@ -183,6 +183,58 @@ export const storage = {
 
   clearAdminSession() {
     localStorage.removeItem(ADMIN_STORAGE_KEY);
+  },
+
+  // File upload for CV photos
+  async uploadPhoto(file, applicationId) {
+    try {
+      if (!file) {
+        return null;
+      }
+
+      // Validate file type
+      const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+      if (!validTypes.includes(file.type)) {
+        throw new Error('Invalid file type. Please upload a JPEG or PNG image.');
+      }
+
+      // Validate file size (max 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file.size > maxSize) {
+        throw new Error('File size too large. Maximum size is 5MB.');
+      }
+
+      // Generate unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${applicationId}_${Date.now()}.${fileExt}`;
+      const filePath = `cv-photos/${fileName}`;
+
+      console.log('Uploading photo to Supabase Storage...', { fileName, filePath });
+
+      // Upload to Supabase Storage
+      const { data, error } = await supabase.storage
+        .from('cv-photos')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) {
+        console.error('Upload error:', error);
+        throw new Error(`Failed to upload photo: ${error.message}`);
+      }
+
+      // Get public URL
+      const { data: urlData } = supabase.storage
+        .from('cv-photos')
+        .getPublicUrl(filePath);
+
+      console.log('Photo uploaded successfully:', urlData.publicUrl);
+      return urlData.publicUrl;
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+      throw error;
+    }
   }
 };
 

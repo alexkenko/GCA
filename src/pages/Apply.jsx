@@ -57,6 +57,9 @@ const Apply = () => {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [applicationId, setApplicationId] = useState('');
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoPreview, setPhotoPreview] = useState(null);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   useEffect(() => {
     if (submitted) {
@@ -82,6 +85,41 @@ const Apply = () => {
       ...formData,
       sea_service: newSeaService
     });
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file type
+      const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+      if (!validTypes.includes(file.type)) {
+        setErrors({ ...errors, photo: 'Please upload a JPEG or PNG image.' });
+        return;
+      }
+
+      // Validate file size (max 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (file.size > maxSize) {
+        setErrors({ ...errors, photo: 'File size too large. Maximum size is 5MB.' });
+        return;
+      }
+
+      setPhotoFile(file);
+      setErrors({ ...errors, photo: '' });
+
+      // Create preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removePhoto = () => {
+    setPhotoFile(null);
+    setPhotoPreview(null);
+    setErrors({ ...errors, photo: '' });
   };
 
   const validateForm = () => {
@@ -125,8 +163,24 @@ const Apply = () => {
     try {
       console.log('Submitting application...', formData);
       
+      // Upload photo if provided
+      let photoUrl = null;
+      if (photoFile) {
+        setUploadingPhoto(true);
+        try {
+          photoUrl = await storage.uploadPhoto(photoFile, applicationId);
+        } catch (photoError) {
+          console.error('Photo upload error:', photoError);
+          alert('Error uploading photo: ' + photoError.message);
+          setUploadingPhoto(false);
+          return;
+        }
+        setUploadingPhoto(false);
+      }
+      
       const savedApp = await storage.saveApplication({
         ...formData,
+        photo_url: photoUrl,
         gdpr_agreed: gdprAgreed,
         application_id: applicationId,
         status: 'pending',
@@ -268,32 +322,7 @@ const Apply = () => {
             <div className="form-section">
               <h2 className="form-section-title">GENERAL INFORMATION</h2>
               
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="surname">Surname *</label>
-                  <input
-                    type="text"
-                    id="surname"
-                    name="surname"
-                    value={formData.surname}
-                    onChange={handleChange}
-                    className={errors.surname ? 'error' : ''}
-                  />
-                  {errors.surname && <span className="error-message">{errors.surname}</span>}
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="date_of_birth">Date of birth</label>
-                  <input
-                    type="date"
-                    id="date_of_birth"
-                    name="date_of_birth"
-                    value={formData.date_of_birth}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
+              {/* Name Fields - First name then Surname */}
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="first_name">First name *</label>
@@ -309,6 +338,33 @@ const Apply = () => {
                 </div>
 
                 <div className="form-group">
+                  <label htmlFor="surname">Surname *</label>
+                  <input
+                    type="text"
+                    id="surname"
+                    name="surname"
+                    value={formData.surname}
+                    onChange={handleChange}
+                    className={errors.surname ? 'error' : ''}
+                  />
+                  {errors.surname && <span className="error-message">{errors.surname}</span>}
+                </div>
+              </div>
+
+              {/* Birth Information */}
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="date_of_birth">Date of birth</label>
+                  <input
+                    type="date"
+                    id="date_of_birth"
+                    name="date_of_birth"
+                    value={formData.date_of_birth}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-group">
                   <label htmlFor="place_of_birth">Place of birth</label>
                   <input
                     type="text"
@@ -320,6 +376,7 @@ const Apply = () => {
                 </div>
               </div>
 
+              {/* Nationality */}
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="nationality">Nationality</label>
@@ -332,7 +389,10 @@ const Apply = () => {
                     placeholder="e.g., Georgian"
                   />
                 </div>
+              </div>
 
+              {/* Phone Numbers - Home telephone then Mobile Phone */}
+              <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="home_telephone">Home telephone</label>
                   <input
@@ -344,9 +404,7 @@ const Apply = () => {
                     placeholder="e.g., +995 32 XXX XXX"
                   />
                 </div>
-              </div>
 
-              <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="mobile_phone">Mobile Phone *</label>
                   <input
@@ -360,7 +418,10 @@ const Apply = () => {
                   />
                   {errors.mobile_phone && <span className="error-message">{errors.mobile_phone}</span>}
                 </div>
+              </div>
 
+              {/* Email */}
+              <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="email_address">Email address *</label>
                   <input
@@ -376,6 +437,7 @@ const Apply = () => {
                 </div>
               </div>
 
+              {/* Address */}
               <div className="form-group">
                 <label htmlFor="home_address">Home Address</label>
                 <textarea
@@ -386,6 +448,41 @@ const Apply = () => {
                   rows="3"
                   placeholder="Enter your complete home address"
                 />
+              </div>
+
+              {/* CV Photo Upload */}
+              <div className="form-group">
+                <label htmlFor="cv_photo">CV Photo</label>
+                <div className="photo-upload-container">
+                  <input
+                    type="file"
+                    id="cv_photo"
+                    name="cv_photo"
+                    accept="image/jpeg,image/jpg,image/png"
+                    onChange={handlePhotoChange}
+                    style={{ display: 'none' }}
+                  />
+                  <label htmlFor="cv_photo" className="photo-upload-button">
+                    {photoPreview ? 'Change Photo' : 'Upload Photo'}
+                  </label>
+                  {photoFile && (
+                    <button
+                      type="button"
+                      onClick={removePhoto}
+                      className="photo-remove-button"
+                    >
+                      Remove
+                    </button>
+                  )}
+                  {errors.photo && <span className="error-message">{errors.photo}</span>}
+                  {photoPreview && (
+                    <div className="photo-preview">
+                      <img src={photoPreview} alt="Preview" />
+                      <p>{photoFile.name}</p>
+                    </div>
+                  )}
+                  <p className="photo-upload-hint">Maximum file size: 5MB. Accepted formats: JPEG, PNG</p>
+                </div>
               </div>
             </div>
 
@@ -533,8 +630,9 @@ const Apply = () => {
               type="submit" 
               className="btn btn-primary"
               style={{ width: '100%', marginTop: '2rem', fontSize: '1.1rem', padding: '1rem' }}
+              disabled={uploadingPhoto}
             >
-              Submit Application
+              {uploadingPhoto ? 'Uploading Photo...' : 'Submit Application'}
             </button>
           </form>
         </div>
