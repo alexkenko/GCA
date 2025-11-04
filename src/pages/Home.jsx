@@ -5,6 +5,10 @@ const Home = () => {
   return (
     <div className="page-container">
       <section className="hero">
+        <div className="wave-container">
+          <div className="wave"></div>
+          <div className="wave"></div>
+        </div>
         <div className="hero-content">
           <h1>Welcome to Georgian Crewing Agency</h1>
           <p className="hero-subtitle">Providing Qualified Marine Professionals to Shipowners Worldwide</p>

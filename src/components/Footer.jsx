@@ -32,7 +32,7 @@ const Footer = () => {
                   </div>
                   <div className="phone-row">
                     <span className="phone-number">+995 592 444436</span>
-                    <span className="phone-name">Mr. Tornike Surmanidze (24/7)</span>
+                    <span className="phone-name">Mr. Tornike Turmanidze (24/7)</span>
                   </div>
                 </div>
               </div>

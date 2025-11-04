@@ -42,7 +42,7 @@ const Contact = () => {
                   </div>
                   <div className="phone-row">
                     <div className="phone-number"><a href="tel:+995592444436">+995 592 444436</a></div>
-                    <div className="phone-name">Mr. Tornike Surmanidze (24/7)</div>
+                    <div className="phone-name">Mr. Tornike Turmanidze (24/7)</div>
                   </div>
                 </div>
               </div>

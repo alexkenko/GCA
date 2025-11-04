@@ -11,7 +11,7 @@ const FAQ = () => {
     },
     {
       question: "How do I request crew for my vessel?",
-      answer: "You can contact us through our contact form, email at crewing@gcagency.ge, or phone at +995 555 300 088 (Office - Working Hours), +995 593 10 78 78 (Capt. Guram Shanidze), +995 597 04 04 18 (Mr. Zurab Saladze), +995 555 12 69 92 (Capt. Archil Varshanidze), or +995 592 444436 (Mr. Tornike Surmanidze - 24/7). Our team will discuss your requirements and provide suitable crew members."
+      answer: "You can contact us through our contact form, email at crewing@gcagency.ge, or phone at +995 555 300 088 (Office - Working Hours), +995 593 10 78 78 (Capt. Guram Shanidze), +995 597 04 04 18 (Mr. Zurab Saladze), +995 555 12 69 92 (Capt. Archil Varshanidze), or +995 592 444436 (Mr. Tornike Turmanidze - 24/7). Our team will discuss your requirements and provide suitable crew members."
     },
     {
       question: "Are all crew members certified?",
