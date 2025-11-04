@@ -9,6 +9,8 @@ const Apply = () => {
     rank: '',
     contracts: '',
     seaTime: '',
+    availabilityDate: '',
+    lastSalary: '',
     phone: '',
     email: ''
   });
@@ -58,6 +60,14 @@ const Apply = () => {
     } else if (isNaN(formData.seaTime) || parseInt(formData.seaTime) < 0) {
       newErrors.seaTime = 'Please enter a valid number of months';
     }
+    if (!formData.availabilityDate.trim()) {
+      newErrors.availabilityDate = 'Date of availability is required';
+    }
+    if (!String(formData.lastSalary).trim()) {
+      newErrors.lastSalary = 'Last salary is required';
+    } else if (isNaN(formData.lastSalary) || parseFloat(formData.lastSalary) < 0) {
+      newErrors.lastSalary = 'Please enter a valid salary amount';
+    }
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone Number is required';
     }
@@ -86,14 +96,15 @@ const Apply = () => {
     
     try {
       console.log('Submitting application...', formData);
-      
-      // Save to Supabase
+
       const savedApp = await storage.saveApplication({
         name: formData.name,
         surname: formData.surname,
         rank_applied_for: formData.rank,
-        experience_contracts: parseInt(formData.contracts),
-        experience_sea_time_months: parseInt(formData.seaTime),
+        experience_contracts: parseInt(formData.contracts, 10),
+        experience_sea_time_months: parseInt(formData.seaTime, 10),
+        availability_date: formData.availabilityDate,
+        last_salary: parseFloat(formData.lastSalary),
         phone_number: formData.phone,
         email_address: formData.email,
         gdpr_agreed: gdprAgreed,
@@ -102,14 +113,12 @@ const Apply = () => {
       });
 
       console.log('Application saved successfully:', savedApp);
-      
+
       setApplicationId(applicationId);
       setSubmitted(true);
-      
-      // Scroll to top immediately
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Reset form after 5 seconds
+
       setTimeout(() => {
         setFormData({
           name: '',
@@ -117,6 +126,8 @@ const Apply = () => {
           rank: '',
           contracts: '',
           seaTime: '',
+          availabilityDate: '',
+          lastSalary: '',
           phone: '',
           email: ''
         });
@@ -234,9 +245,40 @@ const Apply = () => {
                 />
                 {errors.seaTime && <span className="error-message">{errors.seaTime}</span>}
               </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="availabilityDate">Date of Availability *</label>
+              <input
+                type="date"
+                id="availabilityDate"
+                name="availabilityDate"
+                value={formData.availabilityDate}
+                onChange={handleChange}
+                className={errors.availabilityDate ? 'error' : ''}
+              />
+              {errors.availabilityDate && <span className="error-message">{errors.availabilityDate}</span>}
             </div>
 
-            <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="lastSalary">Last Salary (USD) *</label>
+              <input
+                type="number"
+                id="lastSalary"
+                name="lastSalary"
+                value={formData.lastSalary}
+                onChange={handleChange}
+                className={errors.lastSalary ? 'error' : ''}
+                placeholder="e.g., 3500"
+                min="0"
+                step="0.01"
+              />
+              {errors.lastSalary && <span className="error-message">{errors.lastSalary}</span>}
+            </div>
+          </div>
+
+          <div className="form-row">
               <div className="form-group">
                 <label htmlFor="phone">Phone Number *</label>
                 <input
