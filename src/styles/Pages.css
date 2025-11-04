@@ -451,6 +451,43 @@
   text-decoration: underline;
 }
 
+.social-media {
+  margin-top: 1rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 2px solid var(--marine-blue-light);
+  border-radius: 8px;
+  color: var(--marine-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-link:hover {
+  background: var(--marine-blue-light);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-link svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.social-link.facebook:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+}
+
 .contact-form-container {
   background: white;
   padding: 2.5rem;
