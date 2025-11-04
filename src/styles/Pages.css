@@ -1042,9 +1042,152 @@
   }
 }
 
+/* Position Information Grid */
+.position-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.position-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.position-info-right {
+  position: sticky;
+  top: 2rem;
+}
+
+@media (max-width: 968px) {
+  .position-info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .position-info-right {
+    position: static;
+  }
+}
+
 /* Photo Upload Styles */
 .photo-upload-container {
   margin-top: 0.5rem;
+}
+
+.photo-upload-container-top {
+  margin-top: 0.5rem;
+}
+
+.photo-upload-placeholder {
+  width: 100%;
+  min-height: 300px;
+  border: 3px dashed var(--marine-blue-light);
+  border-radius: 12px;
+  background: var(--marine-blue-pale);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.photo-upload-placeholder:hover {
+  border-color: var(--marine-blue);
+  background: rgba(230, 242, 255, 0.8);
+}
+
+.photo-preview-top {
+  width: 100%;
+  border: 2px solid var(--marine-blue-light);
+  border-radius: 12px;
+  background: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 300px;
+  justify-content: center;
+}
+
+.photo-preview-top img {
+  max-width: 100%;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+  object-fit: contain;
+}
+
+.photo-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.photo-upload-button-large {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--marine-blue) 0%, var(--marine-blue-medium) 100%);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.photo-upload-button-large:hover {
+  background: linear-gradient(135deg, var(--marine-blue-dark) 0%, var(--marine-blue) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
+.photo-upload-button-small {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--marine-blue) 0%, var(--marine-blue-medium) 100%);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.photo-upload-button-small:hover {
+  background: linear-gradient(135deg, var(--marine-blue-dark) 0%, var(--marine-blue) 100%);
+}
+
+.photo-remove-button-small {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.photo-remove-button-small:hover {
+  background: #c82333;
+}
+
+.photo-upload-hint-small {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
 }
 
 .photo-upload-button {

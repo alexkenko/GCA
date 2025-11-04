@@ -276,44 +276,87 @@ const Apply = () => {
             <div className="form-section">
               <h2 className="form-section-title">Position Information</h2>
               
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="position_applied_for">Position applied for *</label>
-                  <input
-                    type="text"
-                    id="position_applied_for"
-                    name="position_applied_for"
-                    value={formData.position_applied_for}
-                    onChange={handleChange}
-                    className={errors.position_applied_for ? 'error' : ''}
-                    placeholder="e.g., Deck Officer, Engine Officer, Captain, etc."
-                  />
-                  {errors.position_applied_for && <span className="error-message">{errors.position_applied_for}</span>}
-                </div>
-              </div>
+              <div className="position-info-grid">
+                <div className="position-info-left">
+                  <div className="form-group">
+                    <label htmlFor="position_applied_for">Position applied for *</label>
+                    <input
+                      type="text"
+                      id="position_applied_for"
+                      name="position_applied_for"
+                      value={formData.position_applied_for}
+                      onChange={handleChange}
+                      className={errors.position_applied_for ? 'error' : ''}
+                      placeholder="e.g., Deck Officer, Engine Officer, Captain, etc."
+                    />
+                    {errors.position_applied_for && <span className="error-message">{errors.position_applied_for}</span>}
+                  </div>
 
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="date_of_availability">Date of availability</label>
-                  <input
-                    type="date"
-                    id="date_of_availability"
-                    name="date_of_availability"
-                    value={formData.date_of_availability}
-                    onChange={handleChange}
-                  />
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label htmlFor="date_of_availability">Date of availability</label>
+                      <input
+                        type="date"
+                        id="date_of_availability"
+                        name="date_of_availability"
+                        value={formData.date_of_availability}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="last_salary">Last salary</label>
+                      <input
+                        type="text"
+                        id="last_salary"
+                        name="last_salary"
+                        value={formData.last_salary}
+                        onChange={handleChange}
+                        placeholder="e.g., USD 3000"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="last_salary">Last salary</label>
-                  <input
-                    type="text"
-                    id="last_salary"
-                    name="last_salary"
-                    value={formData.last_salary}
-                    onChange={handleChange}
-                    placeholder="e.g., USD 3000"
-                  />
+                <div className="position-info-right">
+                  <div className="form-group">
+                    <label htmlFor="cv_photo">CV Photo</label>
+                    <div className="photo-upload-container-top">
+                      <input
+                        type="file"
+                        id="cv_photo"
+                        name="cv_photo"
+                        accept="image/jpeg,image/jpg,image/png"
+                        onChange={handlePhotoChange}
+                        style={{ display: 'none' }}
+                      />
+                      {photoPreview ? (
+                        <div className="photo-preview-top">
+                          <img src={photoPreview} alt="CV Photo Preview" />
+                          <div className="photo-actions">
+                            <label htmlFor="cv_photo" className="photo-upload-button-small">
+                              Change
+                            </label>
+                            <button
+                              type="button"
+                              onClick={removePhoto}
+                              className="photo-remove-button-small"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="photo-upload-placeholder">
+                          <label htmlFor="cv_photo" className="photo-upload-button-large">
+                            Upload Photo
+                          </label>
+                          <p className="photo-upload-hint-small">JPEG or PNG<br />Max 5MB</p>
+                        </div>
+                      )}
+                      {errors.photo && <span className="error-message">{errors.photo}</span>}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -450,40 +493,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* CV Photo Upload */}
-              <div className="form-group">
-                <label htmlFor="cv_photo">CV Photo</label>
-                <div className="photo-upload-container">
-                  <input
-                    type="file"
-                    id="cv_photo"
-                    name="cv_photo"
-                    accept="image/jpeg,image/jpg,image/png"
-                    onChange={handlePhotoChange}
-                    style={{ display: 'none' }}
-                  />
-                  <label htmlFor="cv_photo" className="photo-upload-button">
-                    {photoPreview ? 'Change Photo' : 'Upload Photo'}
-                  </label>
-                  {photoFile && (
-                    <button
-                      type="button"
-                      onClick={removePhoto}
-                      className="photo-remove-button"
-                    >
-                      Remove
-                    </button>
-                  )}
-                  {errors.photo && <span className="error-message">{errors.photo}</span>}
-                  {photoPreview && (
-                    <div className="photo-preview">
-                      <img src={photoPreview} alt="Preview" />
-                      <p>{photoFile.name}</p>
-                    </div>
-                  )}
-                  <p className="photo-upload-hint">Maximum file size: 5MB. Accepted formats: JPEG, PNG</p>
-                </div>
-              </div>
             </div>
 
             {/* Documents/Certificates */}
