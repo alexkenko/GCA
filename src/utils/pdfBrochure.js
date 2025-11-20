@@ -1,4 +1,5 @@
 import jsPDF from 'jspdf';
+import QRCode from 'qrcode';
 
 const loadImage = (src) =>
   new Promise((resolve, reject) => {
@@ -43,8 +44,8 @@ export const generateBrochure = async () => {
     doc.setTextColor(...color);
     const lines = doc.splitTextToSize(text, width);
     doc.text(lines, x, y);
-    const height = lines.length * (size * 0.42);
-    return height + 4;
+    const height = lines.length * (size * 0.5);
+    return height + 6;
   };
 
   const addHighlightParagraph = (text, x, y, width) => {
@@ -53,7 +54,7 @@ export const generateBrochure = async () => {
     doc.setTextColor(...colors.primary);
     const lines = doc.splitTextToSize(text, width);
     doc.text(lines, x, y);
-    return lines.length * 5 + 4;
+    return lines.length * 6 + 6;
   };
 
   const addIconBullet = (text, x, y) => {
@@ -78,6 +79,11 @@ export const generateBrochure = async () => {
   const deckImage = await loadImage('/images/cadet-parade-1.jpg');
   const trainingImage = await loadImage('/images/cadet-training-pool.jpg');
   const logoImage = await loadImage('/images/gca-logo.png');
+  const qrDataUrl = await QRCode.toDataURL('https://gcagency.ge', {
+    width: 256,
+    margin: 1,
+    color: { dark: '#00467f', light: '#ffffff' }
+  });
 
   // Header band
   doc.setFillColor(...colors.primary);
@@ -94,6 +100,12 @@ export const generateBrochure = async () => {
   const leftX = margin;
   const middleX = leftX + columnWidth + columnGap;
   const rightX = middleX + columnWidth + columnGap;
+  const dividerTop = 60;
+  const dividerBottom = pageHeight - 45;
+  doc.setDrawColor(220, 226, 232);
+  doc.setLineWidth(0.6);
+  doc.line(leftX + columnWidth + columnGap / 2, dividerTop, leftX + columnWidth + columnGap / 2, dividerBottom);
+  doc.line(middleX + columnWidth + columnGap / 2, dividerTop, middleX + columnWidth + columnGap / 2, dividerBottom);
   let leftY = 70;
   let middleY = 70;
   let rightY = 65;
@@ -155,12 +167,17 @@ export const generateBrochure = async () => {
     middleY,
     columnWidth
   );
-  middleY += 8;
+  doc.setDrawColor(225, 225, 225);
+  doc.setLineWidth(0.4);
+  doc.line(middleX, middleY + 2, middleX + columnWidth, middleY + 2);
+  middleY += 10;
 
   addHeading('Our Certifications', middleX, middleY, 13);
   middleY += 8;
   middleY += addParagraph('• ISO 9001:2015 – Quality Management System', middleX, middleY, columnWidth, 11);
+  middleY += 2;
   middleY += addParagraph('• MLC 2006 – Maritime Labour Convention', middleX, middleY, columnWidth, 11);
+  middleY += 2;
   middleY += addParagraph('• National Maritime Agency Authorization', middleX, middleY, columnWidth, 11);
   middleY += 12;
 
@@ -247,13 +264,12 @@ export const generateBrochure = async () => {
   secondY += addParagraph('Phone: +995 555 300 088 | +995 592 444 436 (24/7)', margin, secondY, contentWidth, 12);
   secondY += addParagraph('Address: Maiakovski Ave N41, Batumi, Georgia', margin, secondY, contentWidth, 12);
 
+  const qrSize = 32;
+  doc.addImage(qrDataUrl, 'PNG', pageWidth - margin - qrSize, secondY - 4, qrSize, qrSize, undefined, 'FAST');
   doc.setFont('helvetica', 'italic');
   doc.setFontSize(11);
   doc.setTextColor(...colors.primary);
   doc.text('Scan QR for more details', margin, secondY + 12);
-  doc.rect(pageWidth - margin - 30, secondY - 4, 30, 30);
-  doc.setFont('helvetica', 'bold');
-  doc.text('GCA', pageWidth - margin - 22, secondY + 12);
 
   doc.save('GCA_Brochure.pdf');
 };
