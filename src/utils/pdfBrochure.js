@@ -47,6 +47,15 @@ export const generateBrochure = async () => {
     return height + 4;
   };
 
+  const addHighlightParagraph = (text, x, y, width) => {
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(...colors.primary);
+    const lines = doc.splitTextToSize(text, width);
+    doc.text(lines, x, y);
+    return lines.length * 5 + 4;
+  };
+
   const addIconBullet = (text, x, y) => {
     doc.setFillColor(...colors.accent);
     doc.circle(x, y - 2, 2, 'F');
@@ -58,9 +67,17 @@ export const generateBrochure = async () => {
     return lines.length * 4.5 + 4;
   };
 
+  const scaledHeight = (img, width) => {
+    const naturalWidth = img.naturalWidth || img.width;
+    const naturalHeight = img.naturalHeight || img.height;
+    if (!naturalWidth || !naturalHeight) return width * 0.6;
+    return (naturalHeight / naturalWidth) * width;
+  };
+
   const heroImage = await loadImage('/images/cadet-parade-2.jpg');
   const deckImage = await loadImage('/images/cadet-parade-1.jpg');
   const trainingImage = await loadImage('/images/cadet-training-pool.jpg');
+  const logoImage = await loadImage('/images/gca-logo.png');
 
   // Header band
   doc.setFillColor(...colors.primary);
@@ -132,16 +149,13 @@ export const generateBrochure = async () => {
     columnWidth
   );
   middleY += 6;
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(12);
-  doc.setTextColor(...colors.primary);
-  doc.text(
+  middleY += addHighlightParagraph(
     'Every crew member undergoes rigorous training and certification to meet international maritime standards for safety and efficiency.',
     middleX,
     middleY,
-    { maxWidth: columnWidth }
+    columnWidth
   );
-  middleY += 16;
+  middleY += 8;
 
   addHeading('Our Certifications', middleX, middleY, 13);
   middleY += 8;
@@ -156,9 +170,19 @@ export const generateBrochure = async () => {
   middleY += addIconBullet('Expert Matching – tailored crew placements for optimal vessel performance.', middleX, middleY);
   middleY += addIconBullet('Global Network – access to international talent and vessel opportunities.', middleX, middleY);
 
-  // Right column - hero image & CTA
-  doc.addImage(heroImage, 'JPEG', rightX, rightY, columnWidth, 90, undefined, 'FAST');
-  rightY += 100;
+  // Right column - branding & CTA
+  const logoHeight = scaledHeight(logoImage, columnWidth * 0.9);
+  doc.addImage(
+    logoImage,
+    'PNG',
+    rightX + (columnWidth - columnWidth * 0.9) / 2,
+    rightY,
+    columnWidth * 0.9,
+    logoHeight,
+    undefined,
+    'FAST'
+  );
+  rightY += logoHeight + 12;
   addHeading('Services Snapshot', rightX, rightY);
   rightY += 8;
   const services = [
@@ -193,8 +217,9 @@ export const generateBrochure = async () => {
   );
   secondY += 6;
 
-  doc.addImage(heroImage, 'JPEG', margin, secondY, contentWidth, 60, undefined, 'FAST');
-  secondY += 70;
+  const bannerHeight = scaledHeight(heroImage, contentWidth);
+  doc.addImage(heroImage, 'JPEG', margin, secondY, contentWidth, bannerHeight, undefined, 'FAST');
+  secondY += bannerHeight + 10;
 
   addHeading('Our Values', margin, secondY, 16);
   secondY += 8;
