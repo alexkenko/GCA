@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Pages.css';
+import { generateBrochure } from '../utils/pdfBrochure';
 
 const Contact = () => {
   return (
@@ -14,6 +15,11 @@ const Contact = () => {
               For shipowners seeking qualified marine professionals, we're here to assist. 
               Contact us through any of the channels below to discuss your crewing needs.
             </p>
+            <div style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+              <button onClick={generateBrochure} className="btn btn-primary" style={{ width: '100%', maxWidth: '300px' }}>
+                📄 Download Company Brochure (PDF)
+              </button>
+            </div>
 
             <div className="contact-details">
               <div className="contact-item">
