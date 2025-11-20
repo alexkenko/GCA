@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/Pages.css';
-import { generateBrochure } from '../utils/pdfBrochure';
 
 const Home = () => {
   return (
@@ -15,7 +14,6 @@ const Home = () => {
           <p className="hero-subtitle">Providing Qualified Marine Professionals to Shipowners Worldwide</p>
           <div className="hero-buttons">
             <a href="/apply" className="btn btn-primary">Submit Application</a>
-            <button onClick={generateBrochure} className="btn btn-secondary">Download Brochure</button>
           </div>
         </div>
       </section>
@@ -53,13 +51,10 @@ const Home = () => {
               As a certified agency holding <strong>სსიპ "საზღვაო ტრანსპორტის სააგენტო"</strong>, <strong>ISO 9001:2015</strong>, 
               and <strong>MLC 2006</strong> certifications, we are committed to international standards and quality service delivery.
             </p>
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '2rem' }}>
               <a href="/about-us" className="btn btn-primary">
                 Learn More About Us
               </a>
-              <button onClick={generateBrochure} className="btn btn-primary" style={{ backgroundColor: 'var(--marine-blue)', color: 'white', border: 'none' }}>
-                Download PDF Brochure
-              </button>
             </div>
           </div>
         </div>
