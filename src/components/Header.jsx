@@ -16,10 +16,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-container">
-        <div className="logo">
+        <Link to="/" className="logo">
           <img src="/images/gca-logo.png?v=1" alt="Georgian Crewing Agency Logo" />
           <span className="company-name">Georgian Crewing Agency</span>
-        </div>
+        </Link>
         <button 
           className="hamburger-menu" 
           onClick={toggleMenu}
