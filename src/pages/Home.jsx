@@ -9,6 +9,18 @@ const Home = () => {
           <div className="wave"></div>
           <div className="wave"></div>
         </div>
+        {/* Video background animation */}
+        <video 
+          className="hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="/videos/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="hero-video-overlay"></div>
         <div className="hero-content">
           <h1>Welcome to Georgian Crewing Agency</h1>
           <p className="hero-subtitle">Providing Qualified Marine Professionals to Shipowners Worldwide</p>
