@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Pages.css';
 
 const Home = () => {
+  const [snowflakes, setSnowflakes] = useState([]);
+
+  useEffect(() => {
+    // Generate snowflakes
+    const generateSnowflakes = () => {
+      const flakes = [];
+      for (let i = 0; i < 50; i++) {
+        flakes.push({
+          id: i,
+          left: Math.random() * 100,
+          animationDuration: Math.random() * 3 + 2, // 2-5 seconds
+          animationDelay: Math.random() * 5,
+          size: Math.random() * 10 + 5, // 5-15px
+          opacity: Math.random() * 0.5 + 0.5, // 0.5-1
+        });
+      }
+      setSnowflakes(flakes);
+    };
+
+    generateSnowflakes();
+  }, []);
+
   return (
     <div className="page-container">
+      {/* Snow Effect */}
+      <div className="snow-container">
+        {snowflakes.map((flake) => (
+          <div
+            key={flake.id}
+            className="snowflake"
+            style={{
+              left: `${flake.left}%`,
+              animationDuration: `${flake.animationDuration}s`,
+              animationDelay: `${flake.animationDelay}s`,
+              width: `${flake.size}px`,
+              height: `${flake.size}px`,
+              opacity: flake.opacity,
+            }}
+          >
+            ❄
+          </div>
+        ))}
+      </div>
       <section className="hero">
         <div className="wave-container">
           <div className="wave"></div>
