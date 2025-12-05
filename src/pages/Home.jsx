@@ -45,6 +45,12 @@ const Home = () => {
           </div>
         ))}
       </div>
+      
+      {/* Animated Santa */}
+      <div className="santa-container">
+        <div className="santa">🎅</div>
+      </div>
+
       <section className="hero">
         <div className="wave-container">
           <div className="wave"></div>
