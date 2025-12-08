@@ -73,14 +73,14 @@ const Apply = () => {
               <li style={{ marginBottom: '1rem' }}>
                 <strong>Email</strong> the completed form to us at:{' '}
                 <a 
-                  href="mailto:crewing@gcagency.ge" 
+                  href="mailto:cv@gcagency.ge" 
                   style={{ 
                     color: 'var(--marine-blue)', 
                     fontWeight: 600,
                     textDecoration: 'underline'
                   }}
                 >
-                  crewing@gcagency.ge
+                  cv@gcagency.ge
                 </a>
               </li>
             </ol>
