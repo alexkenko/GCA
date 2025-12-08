@@ -21,27 +21,19 @@ const Contact = () => {
                 General Contact
               </h3>
               <div style={{ 
-                display: 'flex', 
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-                alignItems: 'flex-start',
-                gap: '1.5rem'
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '1.5rem 2rem',
+                alignItems: 'start'
               }}>
-                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                <div style={{ textAlign: 'center' }}>
                   <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Email</strong>
                   <a href="mailto:crewing@gcagency.ge" style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', textDecoration: 'none' }}>
                     crewing@gcagency.ge
                   </a>
                 </div>
                 
-                <div style={{ 
-                  width: '1px', 
-                  background: 'rgba(0, 51, 102, 0.2)', 
-                  minHeight: '60px',
-                  alignSelf: 'stretch'
-                }}></div>
-                
-                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                <div style={{ textAlign: 'center' }}>
                   <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Phone</strong>
                   <a href="tel:+995555300088" style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', textDecoration: 'none' }}>
                     +995 555 300 088
@@ -49,27 +41,20 @@ const Contact = () => {
                 </div>
                 
                 <div style={{ 
-                  width: '1px', 
-                  background: 'rgba(0, 51, 102, 0.2)', 
-                  minHeight: '60px',
-                  alignSelf: 'stretch'
+                  gridColumn: '1 / -1',
+                  height: '1px',
+                  background: 'rgba(0, 51, 102, 0.2)',
+                  margin: '0.5rem 0'
                 }}></div>
                 
-                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                <div style={{ textAlign: 'center' }}>
                   <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Address</strong>
                   <p style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', margin: 0, lineHeight: '1.5' }}>
                     Maiakovski Ave, N41<br />Batumi, Georgia
                   </p>
                 </div>
                 
-                <div style={{ 
-                  width: '1px', 
-                  background: 'rgba(0, 51, 102, 0.2)', 
-                  minHeight: '60px',
-                  alignSelf: 'stretch'
-                }}></div>
-                
-                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                <div style={{ textAlign: 'center' }}>
                   <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Office Hours</strong>
                   <div style={{ color: 'var(--marine-blue-dark)', fontSize: '0.9rem', lineHeight: '1.6' }}>
                     <div>Mon-Fri: 9:00 AM - 6:00 PM</div>
@@ -147,6 +132,21 @@ const Contact = () => {
             </div>
 
             <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <img 
+                  src="/images/staff/guram-shanidze.jpg" 
+                  alt="Capt. Guram Shanidze"
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '4px solid var(--marine-blue-light)',
+                    margin: '0 auto',
+                    display: 'block'
+                  }}
+                />
+              </div>
               <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
                 Capt. Guram Shanidze
               </h3>
@@ -162,8 +162,11 @@ const Contact = () => {
               <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
                 Capt. Archil Varshanidze
               </h3>
-              <a href="tel:+995555126992" className="team-phone-link">
+              <a href="tel:+995555126992" className="team-phone-link" style={{ marginBottom: '1rem' }}>
                 +995 555 12 69 92
+              </a>
+              <a href="mailto:archil.varshanidze@gcagency.ge" className="team-phone-link" style={{ background: 'var(--marine-blue-pale)', fontSize: '1rem' }}>
+                archil.varshanidze@gcagency.ge
               </a>
             </div>
           </div>
