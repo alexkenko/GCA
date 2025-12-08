@@ -138,6 +138,21 @@ const Contact = () => {
             </div>
 
             <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <img 
+                  src="/images/staff/archil-varshanidze.jpg" 
+                  alt="Capt. Archil Varshanidze"
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '4px solid var(--marine-blue-light)',
+                    margin: '0 auto',
+                    display: 'block'
+                  }}
+                />
+              </div>
               <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
                 Capt. Archil Varshanidze
               </h3>
