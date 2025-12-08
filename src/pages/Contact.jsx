@@ -90,9 +90,12 @@ const Contact = () => {
                   }}
                 />
               </div>
-              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
                 Mr. Zurab Saladze
               </h3>
+              <p style={{ color: 'var(--marine-blue)', fontSize: '0.95rem', marginBottom: '1rem', fontWeight: 600 }}>
+                Technical Superintendent
+              </p>
               <a href="tel:+995597040418" className="team-phone-link" style={{ marginBottom: '1rem' }}>
                 +995 597 04 04 18
               </a>
@@ -102,25 +105,13 @@ const Contact = () => {
             </div>
 
             <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <img 
-                  src="/images/staff/tornike-turmanidze.jpg" 
-                  alt="Mr. Tornike Turmanidze"
-                  style={{
-                    width: '150px',
-                    height: '150px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '4px solid var(--marine-blue-light)',
-                    margin: '0 auto',
-                    display: 'block'
-                  }}
-                />
-              </div>
               <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
                 Mr. Tornike Turmanidze
               </h3>
-              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
+              <p style={{ color: 'var(--marine-blue)', fontSize: '0.95rem', marginBottom: '0.5rem', fontWeight: 600 }}>
+                Managing Director
+              </p>
+              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1rem', fontStyle: 'italic' }}>
                 (24/7 Available)
               </p>
               <a href="tel:+995592444436" className="team-phone-link" style={{ marginBottom: '1rem' }}>
@@ -132,24 +123,12 @@ const Contact = () => {
             </div>
 
             <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <img 
-                  src="/images/staff/guram-shanidze.jpg" 
-                  alt="Capt. Guram Shanidze"
-                  style={{
-                    width: '150px',
-                    height: '150px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '4px solid var(--marine-blue-light)',
-                    margin: '0 auto',
-                    display: 'block'
-                  }}
-                />
-              </div>
-              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
                 Capt. Guram Shanidze
               </h3>
+              <p style={{ color: 'var(--marine-blue)', fontSize: '0.95rem', marginBottom: '1rem', fontWeight: 600 }}>
+                CEO & Founder
+              </p>
               <a href="tel:+995593107878" className="team-phone-link" style={{ marginBottom: '1rem' }}>
                 +995 593 10 78 78
               </a>
@@ -159,9 +138,12 @@ const Contact = () => {
             </div>
 
             <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
-              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
                 Capt. Archil Varshanidze
               </h3>
+              <p style={{ color: 'var(--marine-blue)', fontSize: '0.95rem', marginBottom: '1rem', fontWeight: 600 }}>
+                Marine Superintendent
+              </p>
               <a href="tel:+995555126992" className="team-phone-link" style={{ marginBottom: '1rem' }}>
                 +995 555 12 69 92
               </a>
