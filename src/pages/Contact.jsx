@@ -15,38 +15,29 @@ const Contact = () => {
               Contact us through any of the channels below to discuss your crewing needs.
             </p>
 
-            <div className="contact-details">
-              <div className="contact-item">
-                <h3>Email</h3>
-                <p><a href="mailto:crewing@gcagency.ge">crewing@gcagency.ge</a></p>
-              </div>
-
-              <div className="contact-item">
-                <h3>Phone</h3>
-                <div className="phone-grid">
-                  <div className="phone-row">
-                    <div className="phone-number"><a href="tel:+995555300088">+995 555 300 088</a></div>
-                    <div className="phone-name">Office (Working Hours)</div>
-                  </div>
-                  <div className="phone-row">
-                    <div className="phone-number"><a href="tel:+995593107878">+995 593 10 78 78</a></div>
-                    <div className="phone-name">Capt. Guram Shanidze</div>
-                  </div>
-                  <div className="phone-row">
-                    <div className="phone-number"><a href="tel:+995597040418">+995 597 04 04 18</a></div>
-                    <div className="phone-name">Mr. Zurab Saladze</div>
-                  </div>
-                  <div className="phone-row">
-                    <div className="phone-number"><a href="tel:+995555126992">+995 555 12 69 92</a></div>
-                    <div className="phone-name">Capt. Archil Varshanidze</div>
-                  </div>
-                  <div className="phone-row">
-                    <div className="phone-number"><a href="tel:+995592444436">+995 592 444436</a></div>
-                    <div className="phone-name">Mr. Tornike Turmanidze (24/7)</div>
-                  </div>
+            {/* General Contact Info */}
+            <div className="luxury-box" style={{ marginBottom: '3rem', textAlign: 'center', marginTop: '2rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>
+                General Contact
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+                <div>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Email:</strong>
+                  <a href="mailto:crewing@gcagency.ge" style={{ color: 'var(--marine-blue-dark)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                    crewing@gcagency.ge
+                  </a>
+                </div>
+                <div>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Phone:</strong>
+                  <a href="tel:+995555300088" style={{ color: 'var(--marine-blue-dark)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                    +995 555 300 088
+                  </a>
                 </div>
               </div>
+            </div>
 
+            {/* Address and Office Hours */}
+            <div className="contact-details" style={{ marginTop: '2rem' }}>
               <div className="contact-item">
                 <h3>Address</h3>
                 <p>Maiakovski Ave, N41<br />Batumi, Georgia</p>
@@ -79,10 +70,87 @@ const Contact = () => {
             </div>
           </div>
         </div>
+
+        {/* Team Members Section */}
+        <section style={{ marginTop: '4rem' }}>
+          <h2 style={{ textAlign: 'center', marginBottom: '3rem', color: 'var(--marine-blue-dark)', fontSize: '2.5rem' }}>
+            Our Team
+          </h2>
+
+          <div className="services-grid">
+            <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <img 
+                  src="/images/staff/zurab-saladze.jpg" 
+                  alt="Mr. Zurab Saladze"
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '4px solid var(--marine-blue-light)',
+                    margin: '0 auto',
+                    display: 'block'
+                  }}
+                />
+              </div>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+                Mr. Zurab Saladze
+              </h3>
+              <a href="tel:+995597040418" className="team-phone-link">
+                +995 597 04 04 18
+              </a>
+            </div>
+
+            <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <img 
+                  src="/images/staff/tornike-turmanidze.jpg" 
+                  alt="Mr. Tornike Turmanidze"
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '4px solid var(--marine-blue-light)',
+                    margin: '0 auto',
+                    display: 'block'
+                  }}
+                />
+              </div>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '0.5rem', fontSize: '1.3rem' }}>
+                Mr. Tornike Turmanidze
+              </h3>
+              <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
+                (24/7 Available)
+              </p>
+              <a href="tel:+995592444436" className="team-phone-link">
+                +995 592 444436
+              </a>
+            </div>
+
+            <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+                Capt. Guram Shanidze
+              </h3>
+              <a href="tel:+995593107878" className="team-phone-link">
+                +995 593 10 78 78
+              </a>
+            </div>
+
+            <div className="service-card" style={{ textAlign: 'center', padding: '2rem' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
+                Capt. Archil Varshanidze
+              </h3>
+              <a href="tel:+995555126992" className="team-phone-link">
+                +995 555 12 69 92
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
 };
 
 export default Contact;
-
