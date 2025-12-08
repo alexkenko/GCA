@@ -16,35 +16,65 @@ const Contact = () => {
             </p>
 
             {/* General Contact Info */}
-            <div className="luxury-box" style={{ marginBottom: '3rem', textAlign: 'center', marginTop: '2rem' }}>
-              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.5rem' }}>
+            <div className="luxury-box" style={{ marginBottom: '3rem', marginTop: '2rem', maxWidth: '1000px', marginLeft: 'auto', marginRight: 'auto' }}>
+              <h3 style={{ color: 'var(--marine-blue-dark)', marginBottom: '1.5rem', fontSize: '1.5rem', textAlign: 'center' }}>
                 General Contact
               </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
-                <div>
-                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Email:</strong>
-                  <a href="mailto:crewing@gcagency.ge" style={{ color: 'var(--marine-blue-dark)', fontSize: '1.1rem', textDecoration: 'none' }}>
+              <div style={{ 
+                display: 'flex', 
+                flexWrap: 'wrap',
+                justifyContent: 'space-around',
+                alignItems: 'flex-start',
+                gap: '1.5rem'
+              }}>
+                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Email</strong>
+                  <a href="mailto:crewing@gcagency.ge" style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', textDecoration: 'none' }}>
                     crewing@gcagency.ge
                   </a>
                 </div>
-                <div>
-                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Phone:</strong>
-                  <a href="tel:+995555300088" style={{ color: 'var(--marine-blue-dark)', fontSize: '1.1rem', textDecoration: 'none' }}>
+                
+                <div style={{ 
+                  width: '1px', 
+                  background: 'rgba(0, 51, 102, 0.2)', 
+                  minHeight: '60px',
+                  alignSelf: 'stretch'
+                }}></div>
+                
+                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Phone</strong>
+                  <a href="tel:+995555300088" style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', textDecoration: 'none' }}>
                     +995 555 300 088
                   </a>
                 </div>
-                <div>
-                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Address:</strong>
-                  <p style={{ color: 'var(--marine-blue-dark)', fontSize: '1.1rem', margin: 0 }}>
+                
+                <div style={{ 
+                  width: '1px', 
+                  background: 'rgba(0, 51, 102, 0.2)', 
+                  minHeight: '60px',
+                  alignSelf: 'stretch'
+                }}></div>
+                
+                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Address</strong>
+                  <p style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', margin: 0, lineHeight: '1.5' }}>
                     Maiakovski Ave, N41<br />Batumi, Georgia
                   </p>
                 </div>
-                <div>
-                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem' }}>Office Hours:</strong>
-                  <div style={{ color: 'var(--marine-blue-dark)', fontSize: '1rem', textAlign: 'left' }}>
-                    <p style={{ margin: '0.25rem 0' }}>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p style={{ margin: '0.25rem 0' }}>Saturday: 10:00 AM - 2:00 PM</p>
-                    <p style={{ margin: '0.25rem 0' }}>Sunday: Closed</p>
+                
+                <div style={{ 
+                  width: '1px', 
+                  background: 'rgba(0, 51, 102, 0.2)', 
+                  minHeight: '60px',
+                  alignSelf: 'stretch'
+                }}></div>
+                
+                <div style={{ textAlign: 'center', flex: '1 1 180px', minWidth: '150px' }}>
+                  <strong style={{ color: 'var(--marine-blue)', display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Office Hours</strong>
+                  <div style={{ color: 'var(--marine-blue-dark)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                    <div>Mon-Fri: 9:00 AM - 6:00 PM</div>
+                    <div>Sat: 10:00 AM - 2:00 PM</div>
+                    <div>Sun: Closed</div>
                   </div>
                 </div>
               </div>
