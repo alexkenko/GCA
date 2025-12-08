@@ -46,8 +46,9 @@ const NoBribePolicy = () => {
 
             <h2>5. Gifts and Hospitality</h2>
             <p>
-              Any gifts or hospitality must be modest, appropriate, and transparent. They must never be intended to 
-              influence business decisions or create improper obligations.
+              GCA strictly prohibits the giving or receiving of any gifts or hospitality, regardless of value or intent. 
+              This zero-tolerance policy ensures complete transparency and eliminates any potential for improper influence 
+              or obligations in business relationships.
             </p>
 
             <h2>6. Reporting Violations</h2>

@@ -628,6 +628,26 @@
   font-size: 0.8rem;
 }
 
+/* Team Member Phone Links */
+.team-phone-link {
+  color: var(--marine-blue-dark);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem;
+  background: var(--marine-blue-pale);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.team-phone-link:hover {
+  background: var(--marine-blue-light);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+}
+
 /* Values Grid */
 .values-grid {
   display: grid;
